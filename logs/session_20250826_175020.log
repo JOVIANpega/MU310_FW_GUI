@@ -1,0 +1,12 @@
+[17:50:23] INFO: [RUN] cmd /c chcp 65001 > nul & adb devices
+[17:50:24] INFO: List of devices attached
+[17:50:24] INFO: 
+[17:50:24] INFO: [EXIT] code=0
+[17:50:24] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\check ADB interface.bat"
+[17:50:24] INFO: ============================================
+[17:50:24] INFO:   Check Android ADB Interface
+[17:50:24] INFO: ============================================
+[17:50:25] INFO: [NOT FOUND] No ADB interface detected.
+[17:50:25] INFO: No COM ports found
+[17:50:34] INFO: No COM ports found
+[17:50:36] INFO: No COM ports found

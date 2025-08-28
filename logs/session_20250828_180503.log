@@ -1,0 +1,76 @@
+[18:05:17] INFO: Scan COM ports...
+[18:05:17] INFO: Found 4 COM ports:
+[18:05:17] INFO:   COM9 - Quectel USB AT Port (COM9)
+[18:05:17] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[18:05:17] INFO:   COM7 - Quectel USB DM Port (COM7)
+[18:05:17] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[18:05:19] INFO: Scan COM ports...
+[18:05:19] INFO: Found 4 COM ports:
+[18:05:19] INFO:   COM9 - Quectel USB AT Port (COM9)
+[18:05:19] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[18:05:19] INFO:   COM7 - Quectel USB DM Port (COM7)
+[18:05:19] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[18:05:27] INFO: 檢查 ADB 環境...
+[18:05:27] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\ADB Environment Check.bat"
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>echo === Step 0: Check ADB Environment ===
+[18:05:27] INFO: === Step 0: Check ADB Environment ===
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>where adb  1>nul 2>nul
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[18:05:27] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[18:05:27] INFO:  pause
+[18:05:27] INFO:  exit /b 1
+[18:05:27] INFO: )
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>where adb   | findstr /i "System32"  1>nul
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>if 1 == 0 (
+[18:05:27] INFO: echo [ERROR] Detected ADB in System32 folder!
+[18:05:27] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[18:05:27] INFO:  pause
+[18:05:27] INFO:  exit /b 1
+[18:05:27] INFO: )
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>echo Current adb path:
+[18:05:27] INFO: Current adb path:
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>where adb
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools\adb.exe
+[18:05:27] INFO: C:\platform-tools\adb.exe
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[18:05:27] INFO: 
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>adb version
+[18:05:27] INFO: Android Debug Bridge version 1.0.41
+[18:05:27] INFO: Version 31.0.3-7562133
+[18:05:27] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[18:05:27] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[18:05:27] INFO:  pause
+[18:05:27] INFO:  exit /b 1
+[18:05:27] INFO: )
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>adb kill-server
+[18:05:27] INFO: 
+[18:05:27] INFO: D:\MU310_FW\GUI_ADB_tools>adb start-server
+[18:05:29] INFO: 
+[18:05:29] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[18:05:29] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[18:05:29] INFO: [EXIT] code=0
+[18:05:29] INFO:  pause
+[18:05:29] INFO:  exit /b 1
+[18:05:29] INFO: )
+[18:05:29] INFO: 
+[18:05:29] INFO: D:\MU310_FW\GUI_ADB_tools>adb devices
+[18:05:29] INFO: List of devices attached
+[18:05:29] INFO: 109c377c	device
+[18:05:29] INFO: 
+[18:05:29] INFO: 
+[18:05:29] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[18:05:29] INFO: 
+[18:05:29] ERROR: * daemon not running; starting now at tcp:5037
+[18:05:29] ERROR: * daemon started successfully

@@ -1,0 +1,124 @@
+[17:32:14] INFO: 開始執行 ADB 環境檢查...
+[17:32:14] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\ADB Environment Check.bat"
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>echo === Step 0: Check ADB Environment ===
+[17:32:14] INFO: === Step 0: Check ADB Environment ===
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>where adb  1>nul 2>nul
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[17:32:14] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[17:32:14] INFO:  pause
+[17:32:14] INFO:  exit /b 1
+[17:32:14] INFO: )
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>where adb   | findstr /i "System32"  1>nul
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>if 1 == 0 (
+[17:32:14] INFO: echo [ERROR] Detected ADB in System32 folder!
+[17:32:14] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[17:32:14] INFO:  pause
+[17:32:14] INFO:  exit /b 1
+[17:32:14] INFO: )
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>echo Current adb path:
+[17:32:14] INFO: Current adb path:
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>where adb
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools\adb.exe
+[17:32:14] INFO: C:\platform-tools\adb.exe
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[17:32:14] INFO: 
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>adb version
+[17:32:14] INFO: Android Debug Bridge version 1.0.41
+[17:32:14] INFO: Version 31.0.3-7562133
+[17:32:14] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[17:32:14] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[17:32:14] INFO:  pause
+[17:32:14] INFO:  exit /b 1
+[17:32:14] INFO: )
+[17:32:14] INFO: 
+[17:32:14] INFO: D:\MU310_FW\GUI_ADB_tools>adb kill-server
+[17:32:14] INFO: 
+[17:32:15] INFO: D:\MU310_FW\GUI_ADB_tools>adb start-server
+[17:32:16] INFO: 
+[17:32:16] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[17:32:16] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[17:32:16] INFO: [EXIT] code=0
+[17:32:16] INFO:  pause
+[17:32:16] INFO:  exit /b 1
+[17:32:16] INFO: )
+[17:32:16] INFO: 
+[17:32:16] INFO: D:\MU310_FW\GUI_ADB_tools>adb devices
+[17:32:16] INFO: List of devices attached
+[17:32:16] INFO: 109c377c	device
+[17:32:16] INFO: 
+[17:32:16] INFO: 
+[17:32:16] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[17:32:16] INFO: 
+[17:32:17] ERROR: * daemon not running; starting now at tcp:5037
+[17:32:17] ERROR: * daemon started successfully
+[17:32:19] INFO: 開始掃描 COM 埠...
+[17:32:19] INFO: 發現 4 個 COM 埠:
+[17:32:19] INFO:   COM9 - Quectel USB AT Port (COM9)
+[17:32:19] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[17:32:19] INFO:   COM7 - Quectel USB DM Port (COM7)
+[17:32:19] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[17:32:21] INFO: 開始掃描 COM 埠...
+[17:32:21] INFO: 發現 4 個 COM 埠:
+[17:32:21] INFO:   COM9 - Quectel USB AT Port (COM9)
+[17:32:21] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[17:32:21] INFO:   COM7 - Quectel USB DM Port (COM7)
+[17:32:21] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[17:32:31] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q612EB_V1.1.0.0_1_modem.bin
+[17:32:32] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin
+[17:32:32] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[17:32:32] INFO: [INFO] Firmware selected: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[17:32:32] INFO: ===============================================
+[17:32:32] INFO:    MU310 Firmware Flashing Tool v1.1
+[17:32:32] INFO: ===============================================
+[17:32:32] INFO: === Step 0: Check ADB version ===
+[17:32:32] INFO: Android Debug Bridge version 1.0.41
+[17:32:32] INFO: Version 31.0.3-7562133
+[17:32:32] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[17:32:34] INFO: 
+[17:32:34] INFO: === Step 1: Check ADB connection ===
+[17:32:34] INFO: Found device: 109c377c	device
+[17:32:34] INFO: [SUCCESS] ADB device connection normal
+[17:32:34] INFO: 
+[17:32:34] INFO: === Step 2: Check firmware file ===
+[17:32:34] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[17:32:34] INFO: 
+[17:32:34] INFO: === Step 3: Test write permission ===
+[17:32:34] INFO: [SUCCESS] Target directory writable
+[17:32:34] INFO: 
+[17:32:34] INFO: === Step 4: Upload firmware ===
+[17:32:34] INFO: [4.1] Uploading firmware to device...
+[17:33:04] INFO: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin: 1 file pushed, 0 skipped. 4.0 MB/s (123403173 bytes in 29.590s)
+[17:33:04] INFO: [SUCCESS] Firmware upload completed
+[17:33:04] INFO: 
+[17:33:04] INFO: [4.2] Executing sync operation...
+[17:33:07] INFO: [SUCCESS] Sync operation completed
+[17:33:07] INFO: 
+[17:33:07] INFO: [4.3] Stopping related system services...
+[17:33:08] INFO: [SUCCESS] System services stopped
+[17:33:08] INFO: 
+[17:33:08] INFO: [4.4] Checking /dev/smd7...
+[17:33:08] INFO: [SUCCESS] /dev/smd7 status check completed
+[17:33:08] INFO: 
+[17:33:08] INFO: [4.5] Sending firmware update command...
+[17:33:10] INFO: [SUCCESS] Firmware flashing command sent
+[17:33:10] INFO: 
+[17:33:10] INFO: ===============================================
+[17:33:10] INFO: Notes:
+[17:33:10] INFO: 1. Please wait for device to complete firmware update
+[17:33:10] INFO: 2. Do not disconnect during update process
+[17:33:10] INFO: 3. Device may restart automatically
+[17:33:10] INFO: 4. The entire process may take several minutes
+[17:33:10] INFO: ===============================================
+[17:33:10] INFO: 
+[17:33:10] INFO: MU310 burn in PASS and please wait 4 mins for update.

@@ -1,0 +1,9 @@
+[15:52:34] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[15:52:37] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[15:52:37] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[15:52:37] ERROR: ) was unexpected at this time.
+[15:52:37] INFO: [EXIT] code=255
+[15:52:47] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[15:52:47] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[15:52:47] ERROR: ) was unexpected at this time.
+[15:52:47] INFO: [EXIT] code=255

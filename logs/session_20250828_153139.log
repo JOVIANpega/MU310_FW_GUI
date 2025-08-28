@@ -1,0 +1,41 @@
+[15:35:50] INFO: 已選擇韌體檔案: D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[15:35:51] INFO: 開始執行韌體升級，使用檔案: D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[15:35:51] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[15:35:51] INFO: 
+[15:35:51] INFO: D:\MU310_FW\GUI_ADB_tools>REM =========================================================
+[15:35:51] INFO: 
+[15:35:51] INFO: D:\MU310_FW\GUI_ADB_tools>REM Features:
+[15:35:51] INFO: 
+[15:35:51] INFO: D:\MU310_FW\GUI_ADB_tools>REM  1. Check if ADB tool is available
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  2. Verify DUT is connected via ADB
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  3. Confirm firmware file exists
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  4. Test if DUT target directory is writable
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  5. Push firmware file to DUT
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  6. Sync the file system
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  7. Stop related system services
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  8. Check /dev/smd7 status
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM  9. Send AT command to trigger firmware upgrade
+[15:35:52] INFO: 
+[15:35:52] INFO: D:\MU310_FW\GUI_ADB_tools>REM =========================================================
+[15:35:52] INFO: ===============================================
+[15:35:52] INFO:    MU310 Firmware Flashing Tool v1.1
+[15:35:52] INFO: ===============================================
+[15:35:52] INFO: === Step 0: Check ADB version ===
+[15:35:52] INFO: Android Debug Bridge version 1.0.41
+[15:35:52] INFO: Version 31.0.3-7562133
+[15:35:52] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[15:35:54] INFO: 
+[15:35:54] INFO: === Step 1: Check ADB connection ===
+[15:35:54] INFO: Found device: 109c377c	device
+[15:35:54] INFO: [SUCCESS] ADB device connection normal
+[15:35:54] INFO: 
+[15:35:54] INFO: === Step 2: Check firmware file ===
+[15:35:54] INFO: [ERROR] Firmware file not found!

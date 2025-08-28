@@ -1,0 +1,63 @@
+[15:37:33] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\ADB Environment Check.bat"
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>echo === Step 0: Check ADB Environment ===
+[15:37:34] INFO: === Step 0: Check ADB Environment ===
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>where adb  1>nul 2>nul
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[15:37:34] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[15:37:34] INFO:  pause
+[15:37:34] INFO:  exit /b 1
+[15:37:34] INFO: )
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>where adb   | findstr /i "System32"  1>nul
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>if 1 == 0 (
+[15:37:34] INFO: echo [ERROR] Detected ADB in System32 folder!
+[15:37:34] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[15:37:34] INFO:  pause
+[15:37:34] INFO:  exit /b 1
+[15:37:34] INFO: )
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>echo Current adb path:
+[15:37:34] INFO: Current adb path:
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>where adb
+[15:37:34] INFO: C:\platform-tools\adb.exe
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[15:37:34] INFO: 
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>adb version
+[15:37:34] INFO: Android Debug Bridge version 1.0.41
+[15:37:34] INFO: Version 35.0.0-11411520
+[15:37:34] INFO: Installed as C:\platform-tools\adb.exe
+[15:37:34] INFO: Running on Windows 10.0.26100
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[15:37:34] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[15:37:34] INFO:  pause
+[15:37:34] INFO:  exit /b 1
+[15:37:34] INFO: )
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>adb kill-server
+[15:37:34] INFO: 
+[15:37:34] INFO: D:\MU310_FW\GUI_ADB_tools>adb start-server
+[15:37:36] INFO: 
+[15:37:36] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[15:37:36] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[15:37:36] INFO:  pause
+[15:37:36] INFO:  exit /b 1
+[15:37:36] INFO: )
+[15:37:36] INFO: 
+[15:37:36] INFO: D:\MU310_FW\GUI_ADB_tools>adb devices
+[15:37:36] INFO: [EXIT] code=0
+[15:37:36] INFO: List of devices attached
+[15:37:36] INFO: 
+[15:37:36] INFO: 
+[15:37:36] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[15:37:36] INFO: 
+[15:37:36] ERROR: * daemon not running; starting now at tcp:5037
+[15:37:36] ERROR: * daemon started successfully
+[15:38:12] INFO: Scan AT ports: TODO implement in Python.

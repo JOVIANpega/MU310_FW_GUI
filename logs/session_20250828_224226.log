@@ -1,0 +1,72 @@
+[22:42:27] INFO: Scan COM ports...
+[22:42:27] INFO: Found 3 COM ports:
+[22:42:27] INFO:   COM1- 通訊連接埠 (COM1
+[22:42:27] INFO:   COM3- com0com - serial port emulator (COM3
+[22:42:27] INFO:   COM4- com0com - serial port emulator (COM4
+[22:42:34] INFO: 檢查 ADB 環境...
+[22:42:34] INFO: [RUN] cmd /c chcp 65001 > nul & call "M:\PYTHON\MU310_FW_GUI-main\ADB Environment Check.bat"
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>echo === Step 0: Check ADB Environment ===
+[22:42:34] INFO: === Step 0: Check ADB Environment ===
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>where adb  1>nul 2>nul
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>if 0 NEQ 0 (
+[22:42:34] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[22:42:34] INFO:  pause
+[22:42:34] INFO:  exit /b 1
+[22:42:34] INFO: )
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>where adb   | findstr /i "System32"  1>nul
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>if 1 == 0 (
+[22:42:34] INFO: echo [ERROR] Detected ADB in System32 folder!
+[22:42:34] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[22:42:34] INFO:  pause
+[22:42:34] INFO:  exit /b 1
+[22:42:34] INFO: )
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>echo Current adb path:
+[22:42:34] INFO: Current adb path:
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>where adb
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main\adb.exe
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>echo.
+[22:42:34] INFO: 
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>adb version
+[22:42:34] INFO: Android Debug Bridge version 1.0.41
+[22:42:34] INFO: Version 31.0.3-7562133
+[22:42:34] INFO: Installed as M:\PYTHON\MU310_FW_GUI-main\adb.exe
+[22:42:34] INFO: 
+[22:42:34] INFO: M:\PYTHON\MU310_FW_GUI-main>if 0 NEQ 0 (
+[22:42:34] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[22:42:34] INFO:  pause
+[22:42:34] INFO:  exit /b 1
+[22:42:34] INFO: )
+[22:42:35] INFO: 
+[22:42:35] INFO: M:\PYTHON\MU310_FW_GUI-main>adb kill-server
+[22:42:35] INFO: 
+[22:42:35] INFO: M:\PYTHON\MU310_FW_GUI-main>adb start-server
+[22:42:36] INFO: Scan COM ports...
+[22:42:36] INFO: Found 3 COM ports:
+[22:42:36] INFO:   COM1- 通訊連接埠 (COM1
+[22:42:36] INFO:   COM3- com0com - serial port emulator (COM3
+[22:42:36] INFO:   COM4- com0com - serial port emulator (COM4
+[22:42:36] INFO: 
+[22:42:36] INFO: M:\PYTHON\MU310_FW_GUI-main>if 0 NEQ 0 (
+[22:42:36] INFO: [EXIT] code=0
+[22:42:36] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[22:42:36] INFO:  pause
+[22:42:36] INFO:  exit /b 1
+[22:42:36] INFO: )
+[22:42:36] INFO: 
+[22:42:36] INFO: M:\PYTHON\MU310_FW_GUI-main>adb devices
+[22:42:36] INFO: List of devices attached
+[22:42:36] INFO: 
+[22:42:36] INFO: 
+[22:42:36] INFO: M:\PYTHON\MU310_FW_GUI-main>echo.
+[22:42:37] INFO: 
+[22:42:37] ERROR: * daemon not running; starting now at tcp:5037
+[22:42:37] ERROR: * daemon started successfully

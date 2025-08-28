@@ -1,0 +1,91 @@
+[14:07:27] INFO: 開始執行 ADB 環境檢查...
+[14:07:27] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042\ADB Environment Check.bat"
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>echo === Step 0: Check ADB Environment ===
+[14:07:28] INFO: === Step 0: Check ADB Environment ===
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>where adb  1>nul 2>nul
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>if 0 NEQ 0 (
+[14:07:28] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[14:07:28] INFO:  pause
+[14:07:28] INFO:  exit /b 1
+[14:07:28] INFO: )
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>where adb   | findstr /i "System32"  1>nul
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>if 1 == 0 (
+[14:07:28] INFO: echo [ERROR] Detected ADB in System32 folder!
+[14:07:28] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[14:07:28] INFO:  pause
+[14:07:28] INFO:  exit /b 1
+[14:07:28] INFO: )
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>echo Current adb path:
+[14:07:28] INFO: Current adb path:
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>where adb
+[14:07:28] INFO: C:\platform-tools\adb.exe
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>echo.
+[14:07:28] INFO: 
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>adb version
+[14:07:28] INFO: Android Debug Bridge version 1.0.41
+[14:07:28] INFO: Version 35.0.0-11411520
+[14:07:28] INFO: Installed as C:\platform-tools\adb.exe
+[14:07:28] INFO: Running on Windows 10.0.26100
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>if 0 NEQ 0 (
+[14:07:28] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[14:07:28] INFO:  pause
+[14:07:28] INFO:  exit /b 1
+[14:07:28] INFO: )
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>adb kill-server
+[14:07:28] INFO: 
+[14:07:28] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>adb start-server
+[14:07:30] INFO: 開始掃描 COM 埠...
+[14:07:30] INFO: 發現 4 個 COM 埠:
+[14:07:30] INFO:   COM9 - Quectel USB AT Port (COM9)
+[14:07:30] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[14:07:30] INFO:   COM7 - Quectel USB DM Port (COM7)
+[14:07:30] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[14:07:33] INFO: 
+[14:07:33] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>if 0 NEQ 0 (
+[14:07:33] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[14:07:33] INFO: [EXIT] code=0
+[14:07:33] INFO:  pause
+[14:07:33] INFO:  exit /b 1
+[14:07:33] INFO: )
+[14:07:33] INFO: 
+[14:07:33] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>adb devices
+[14:07:33] INFO: List of devices attached
+[14:07:33] INFO: 109c377c	device
+[14:07:33] INFO: 
+[14:07:33] INFO: 
+[14:07:33] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI235042>echo.
+[14:07:33] INFO: 
+[14:07:33] ERROR: * daemon not running; starting now at tcp:5037
+[14:07:33] ERROR: * daemon started successfully
+[14:07:40] INFO: 開始掃描 COM 埠...
+[14:07:40] INFO: 發現 4 個 COM 埠:
+[14:07:40] INFO:   COM9 - Quectel USB AT Port (COM9)
+[14:07:40] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[14:07:40] INFO:   COM7 - Quectel USB DM Port (COM7)
+[14:07:40] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[14:07:49] INFO: 開始掃描 COM 埠...
+[14:07:49] INFO: 發現 4 個 COM 埠:
+[14:07:49] INFO:   COM9 - Quectel USB AT Port (COM9)
+[14:07:49] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[14:07:49] INFO:   COM7 - Quectel USB DM Port (COM7)
+[14:07:49] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[14:07:55] INFO: 開始掃描 COM 埠...
+[14:07:55] INFO: 發現 1 個 COM 埠:
+[14:07:55] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[14:08:03] INFO: 開始掃描 COM 埠...
+[14:08:03] INFO: 發現 4 個 COM 埠:
+[14:08:03] INFO:   COM9 - Quectel USB AT Port (COM9)
+[14:08:03] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[14:08:03] INFO:   COM7 - Quectel USB DM Port (COM7)
+[14:08:03] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)

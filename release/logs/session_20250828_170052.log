@@ -1,0 +1,20 @@
+[17:02:16] INFO: 開始檢查 DM 埠...
+[17:02:16] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI192002\checkDMport_ENG.bat"
+[17:02:16] INFO: ===============================================
+[17:02:16] INFO:    MU310 Firmware Flashing Tool v1.0
+[17:02:16] INFO: ===============================================
+[17:02:17] INFO: === Step 1: Check ADB Connection ===
+[17:02:17] INFO: Running adb devices...
+[17:02:17] INFO: Device found: 109c377c	device
+[17:02:17] INFO: [OK] ADB device connected.
+[17:02:17] INFO: 
+[17:02:17] INFO: === Step 2: Check DM PORT ===
+[17:02:17] INFO: Found DM PORT: Quectel USB DM Port (COM7)
+[17:02:17] INFO: [EXIT] code=1
+[17:02:17] INFO: [OK] DM PORT found = COM7
+[17:02:17] INFO: 
+[17:02:17] INFO: === Step 3: Check Firmware File ===
+[17:02:17] INFO: [ERROR] Firmware file not found: MU310-Q612_V0.0.0.0_1_modem.bin
+[17:02:17] INFO: Please ensure the firmware file exists in the correct path.
+[17:02:17] INFO: Press any key to continue . . .
+[17:02:17] ERROR: Parameter format not correct - ::

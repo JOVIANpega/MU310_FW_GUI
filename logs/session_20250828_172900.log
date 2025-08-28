@@ -1,0 +1,7 @@
+[17:29:06] INFO: Open help: D:\MU310_FW\GUI_ADB_tools\assets\help.html
+[17:30:15] INFO: 開始掃描 COM 埠...
+[17:30:15] INFO: 發現 4 個 COM 埠:
+[17:30:15] INFO:   COM9 - Quectel USB AT Port (COM9)
+[17:30:15] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[17:30:15] INFO:   COM7 - Quectel USB DM Port (COM7)
+[17:30:15] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)

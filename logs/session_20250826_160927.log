@@ -1,0 +1,13 @@
+[16:10:42] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\check ADB interface.bat"
+[16:10:42] INFO: ============================================
+[16:10:42] INFO:   Check Android ADB Interface
+[16:10:42] INFO: ============================================
+[16:10:43] INFO: [NOT FOUND] No ADB interface detected.
+[16:10:54] INFO: [RUN] cmd /c chcp 65001 > nul & adb devices
+[16:10:54] INFO: List of devices attached
+[16:10:54] INFO: 
+[16:10:54] INFO: [EXIT] code=0
+[16:10:58] INFO: [RUN] cmd /c chcp 65001 > nul & adb kill-server & adb start-server
+[16:11:00] ERROR: * daemon not running; starting now at tcp:5037
+[16:11:00] INFO: [EXIT] code=0
+[16:11:00] ERROR: * daemon started successfully

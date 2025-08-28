@@ -1,0 +1,131 @@
+[16:39:51] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:39:52] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:39:52] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:39:52] INFO: [INFO] Firmware selected: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:39:52] INFO: ===============================================
+[16:39:52] INFO:    MU310 Firmware Flashing Tool v1.1
+[16:39:52] INFO: ===============================================
+[16:39:52] INFO: === Step 0: Check ADB version ===
+[16:39:52] INFO: Android Debug Bridge version 1.0.41
+[16:39:52] INFO: Version 31.0.3-7562133
+[16:39:52] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[16:39:54] INFO: 
+[16:39:54] INFO: === Step 1: Check ADB connection ===
+[16:39:54] INFO: Found device: 109c377c	device
+[16:39:54] INFO: [SUCCESS] ADB device connection normal
+[16:39:54] INFO: 
+[16:39:54] INFO: === Step 2: Check firmware file ===
+[16:39:54] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:39:54] INFO: 
+[16:39:54] INFO: === Step 3: Test write permission ===
+[16:39:54] INFO: [SUCCESS] Target directory writable
+[16:39:54] INFO: 
+[16:39:54] INFO: === Step 4: Upload firmware ===
+[16:39:54] INFO: [4.1] Uploading firmware to device...
+[16:40:24] INFO: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin: 1 file pushed, 0 skipped. 3.9 MB/s (123185277 bytes in 30.104s)
+[16:40:24] INFO: [SUCCESS] Firmware upload completed
+[16:40:25] INFO: 
+[16:40:25] INFO: [4.2] Executing sync operation...
+[16:40:29] INFO: [SUCCESS] Sync operation completed
+[16:40:29] INFO: 
+[16:40:29] INFO: [4.3] Stopping related system services...
+[16:40:30] INFO: [SUCCESS] System services stopped
+[16:40:30] INFO: 
+[16:40:30] INFO: [4.4] Checking /dev/smd7...
+[16:40:30] INFO: [SUCCESS] /dev/smd7 status check completed
+[16:40:30] INFO: 
+[16:40:30] INFO: [4.5] Sending firmware update command...
+[16:40:32] INFO: [SUCCESS] Firmware flashing command sent
+[16:40:32] INFO: 
+[16:40:32] INFO: ===============================================
+[16:40:32] INFO: Notes:
+[16:40:32] INFO: 1. Please wait for device to complete firmware update
+[16:40:32] INFO: 2. Do not disconnect during update process
+[16:40:32] INFO: 3. Device may restart automatically
+[16:40:32] INFO: 4. The entire process may take several minutes
+[16:40:32] INFO: ===============================================
+[16:40:32] INFO: 
+[16:40:32] INFO: MU310 burn in PASS and please wait 4 mins for update.
+[16:42:31] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:42:32] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:42:32] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:42:32] INFO: [INFO] Firmware selected: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:42:32] INFO: ===============================================
+[16:42:32] INFO:    MU310 Firmware Flashing Tool v1.1
+[16:42:32] INFO: ===============================================
+[16:42:32] INFO: === Step 0: Check ADB version ===
+[16:42:32] INFO: Android Debug Bridge version 1.0.41
+[16:42:32] INFO: Version 31.0.3-7562133
+[16:42:32] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[16:42:34] INFO: 
+[16:42:34] INFO: === Step 1: Check ADB connection ===
+[16:42:34] INFO: [INFO] No ADB device found, retrying in 3 seconds... (1/5
+[16:42:37] INFO: [INFO] No ADB device found, retrying in 3 seconds... (2/5
+[16:42:40] INFO: [INFO] No ADB device found, retrying in 3 seconds... (3/5
+[16:42:43] INFO: [INFO] No ADB device found, retrying in 3 seconds... (4/5
+[16:43:25] INFO: Found device: 109c377c	offline
+[16:43:25] INFO: [SUCCESS] ADB device connection normal
+[16:43:25] INFO: 
+[16:43:25] INFO: === Step 2: Check firmware file ===
+[16:43:25] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:43:25] INFO: 
+[16:43:25] INFO: === Step 3: Test write permission ===
+[16:43:25] INFO: [ERROR] Cannot write to /usrdata/cache/ufs
+[16:44:42] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:44:46] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:44:52] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:44:52] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:44:52] INFO: [INFO] Firmware selected: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:44:52] INFO: ===============================================
+[16:44:52] INFO:    MU310 Firmware Flashing Tool v1.1
+[16:44:52] INFO: ===============================================
+[16:44:52] INFO: === Step 0: Check ADB version ===
+[16:44:52] INFO: Android Debug Bridge version 1.0.41
+[16:44:52] INFO: Version 31.0.3-7562133
+[16:44:52] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[16:44:54] INFO: 
+[16:44:54] INFO: === Step 1: Check ADB connection ===
+[16:44:54] INFO: Found device: 109c377c	device
+[16:44:54] INFO: [SUCCESS] ADB device connection normal
+[16:44:54] INFO: 
+[16:44:54] INFO: === Step 2: Check firmware file ===
+[16:44:54] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:44:54] INFO: Press any key to continue . . .
+[16:44:54] INFO: Press any key to continue . . .
+[16:44:54] INFO: 
+[16:44:54] INFO: [EXIT] code=0
+[16:44:54] INFO: [EXIT] code=1
+[16:44:54] INFO: === Step 3: Test write permission ===
+[16:44:54] ERROR: * daemon not running; starting now at tcp:5037
+[16:44:54] ERROR: * daemon not running; starting now at tcp:5037
+[16:44:54] ERROR: * daemon started successfully
+[16:44:54] ERROR: * daemon started successfully
+[16:44:54] ERROR: adb.exe: device offline
+[16:44:54] INFO: [SUCCESS] Target directory writable
+[16:44:54] INFO: 
+[16:44:54] INFO: === Step 4: Upload firmware ===
+[16:44:54] INFO: [4.1] Uploading firmware to device...
+[16:45:25] INFO: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin: 1 file pushed, 0 skipped. 3.8 MB/s (123185277 bytes in 30.603s)
+[16:45:25] INFO: [SUCCESS] Firmware upload completed
+[16:45:25] INFO: 
+[16:45:25] INFO: [4.2] Executing sync operation...
+[16:45:29] INFO: [SUCCESS] Sync operation completed
+[16:45:29] INFO: 
+[16:45:29] INFO: [4.3] Stopping related system services...
+[16:45:30] INFO: [SUCCESS] System services stopped
+[16:45:30] INFO: 
+[16:45:30] INFO: [4.4] Checking /dev/smd7...
+[16:45:31] INFO: [SUCCESS] /dev/smd7 status check completed
+[16:45:31] INFO: 
+[16:45:31] INFO: [4.5] Sending firmware update command...
+[16:45:33] INFO: [SUCCESS] Firmware flashing command sent
+[16:45:33] INFO: 
+[16:45:33] INFO: ===============================================
+[16:45:33] INFO: Notes:
+[16:45:33] INFO: 1. Please wait for device to complete firmware update
+[16:45:33] INFO: 2. Do not disconnect during update process
+[16:45:33] INFO: 3. Device may restart automatically
+[16:45:33] INFO: 4. The entire process may take several minutes
+[16:45:33] INFO: ===============================================
+[16:45:33] INFO: 
+[16:45:33] INFO: MU310 burn in PASS and please wait 4 mins for update.

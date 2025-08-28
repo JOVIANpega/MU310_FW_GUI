@@ -1,0 +1,47 @@
+[15:42:31] INFO: 開始掃描 COM 埠...
+[15:42:31] INFO: 發現 4 個 COM 埠:
+[15:42:31] INFO:   COM9 - Quectel USB AT Port (COM9)
+[15:42:31] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[15:42:31] INFO:   COM7 - Quectel USB DM Port (COM7)
+[15:42:31] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[15:42:40] INFO: 已選擇韌體檔案: D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[15:42:40] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[15:42:40] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[15:42:40] INFO: 
+[15:42:40] INFO: D:\MU310_FW\GUI_ADB_tools>REM =========================================================
+[15:42:40] INFO: 
+[15:42:40] INFO: D:\MU310_FW\GUI_ADB_tools>REM Features:
+[15:42:40] INFO: 
+[15:42:40] INFO: D:\MU310_FW\GUI_ADB_tools>REM  1. Check if ADB tool is available
+[15:42:40] INFO: 
+[15:42:40] INFO: D:\MU310_FW\GUI_ADB_tools>REM  2. Verify DUT is connected via ADB
+[15:42:40] INFO: 
+[15:42:40] INFO: D:\MU310_FW\GUI_ADB_tools>REM  3. Confirm firmware file exists
+[15:42:40] INFO: 
+[15:42:41] INFO: D:\MU310_FW\GUI_ADB_tools>REM  4. Test if DUT target directory is writable
+[15:42:41] INFO: 
+[15:42:41] INFO: D:\MU310_FW\GUI_ADB_tools>REM  5. Push firmware file to DUT
+[15:42:41] INFO: 
+[15:42:41] INFO: D:\MU310_FW\GUI_ADB_tools>REM  6. Sync the file system
+[15:42:41] INFO: 
+[15:42:41] INFO: D:\MU310_FW\GUI_ADB_tools>REM  7. Stop related system services
+[15:42:41] INFO: 
+[15:42:41] INFO: D:\MU310_FW\GUI_ADB_tools>REM  8. Check /dev/smd7 status
+[15:42:41] INFO: 
+[15:42:41] INFO: D:\MU310_FW\GUI_ADB_tools>REM  9. Send AT command to trigger firmware upgrade
+[15:42:41] INFO: 
+[15:42:41] INFO: D:\MU310_FW\GUI_ADB_tools>REM =========================================================
+[15:42:41] INFO: ===============================================
+[15:42:41] INFO:    MU310 Firmware Flashing Tool v1.1
+[15:42:41] INFO: ===============================================
+[15:42:41] INFO: === Step 0: Check ADB version ===
+[15:42:41] INFO: Android Debug Bridge version 1.0.41
+[15:42:41] INFO: Version 31.0.3-7562133
+[15:42:41] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[15:42:43] INFO: 
+[15:42:43] INFO: === Step 1: Check ADB connection ===
+[15:42:43] INFO: Found device: 109c377c	device
+[15:42:43] INFO: [SUCCESS] ADB device connection normal
+[15:42:43] INFO: 
+[15:42:43] INFO: === Step 2: Check firmware file ===
+[15:42:43] INFO: [ERROR] Firmware file not found!

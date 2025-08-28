@@ -1,0 +1,48 @@
+[16:57:50] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:57:51] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:57:51] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:57:51] INFO: [INFO] Firmware selected: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:57:51] INFO: ===============================================
+[16:57:51] INFO:    MU310 Firmware Flashing Tool v1.1
+[16:57:51] INFO: ===============================================
+[16:57:51] INFO: === Step 0: Check ADB version ===
+[16:57:51] INFO: Android Debug Bridge version 1.0.41
+[16:57:51] INFO: Version 31.0.3-7562133
+[16:57:51] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[16:57:54] INFO: 
+[16:57:54] INFO: === Step 1: Check ADB connection ===
+[16:57:54] INFO: Found device: 109c377c	device
+[16:57:54] INFO: [SUCCESS] ADB device connection normal
+[16:57:54] INFO: 
+[16:57:54] INFO: === Step 2: Check firmware file ===
+[16:57:54] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:57:54] INFO: 
+[16:57:54] INFO: === Step 3: Test write permission ===
+[16:57:54] INFO: [SUCCESS] Target directory writable
+[16:57:54] INFO: 
+[16:57:54] INFO: === Step 4: Upload firmware ===
+[16:57:54] INFO: [4.1] Uploading firmware to device...
+[16:58:24] INFO: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin: 1 file pushed, 0 skipped. 3.9 MB/s (123403173 bytes in 29.906s)
+[16:58:24] INFO: [SUCCESS] Firmware upload completed
+[16:58:24] INFO: 
+[16:58:24] INFO: [4.2] Executing sync operation...
+[16:58:28] INFO: [SUCCESS] Sync operation completed
+[16:58:28] INFO: 
+[16:58:28] INFO: [4.3] Stopping related system services...
+[16:58:29] INFO: [SUCCESS] System services stopped
+[16:58:29] INFO: 
+[16:58:29] INFO: [4.4] Checking /dev/smd7...
+[16:58:30] INFO: [SUCCESS] /dev/smd7 status check completed
+[16:58:30] INFO: 
+[16:58:30] INFO: [4.5] Sending firmware update command...
+[16:58:32] INFO: [SUCCESS] Firmware flashing command sent
+[16:58:32] INFO: 
+[16:58:32] INFO: ===============================================
+[16:58:32] INFO: Notes:
+[16:58:32] INFO: 1. Please wait for device to complete firmware update
+[16:58:32] INFO: 2. Do not disconnect during update process
+[16:58:32] INFO: 3. Device may restart automatically
+[16:58:32] INFO: 4. The entire process may take several minutes
+[16:58:32] INFO: ===============================================
+[16:58:32] INFO: 
+[16:58:32] INFO: MU310 burn in PASS and please wait 4 mins for update.

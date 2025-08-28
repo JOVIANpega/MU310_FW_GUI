@@ -1,0 +1,139 @@
+[16:00:26] INFO: 開始執行 ADB 環境檢查...
+[16:00:26] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\ADB Environment Check.bat"
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>echo === Step 0: Check ADB Environment ===
+[16:00:26] INFO: === Step 0: Check ADB Environment ===
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>where adb  1>nul 2>nul
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[16:00:26] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[16:00:26] INFO:  pause
+[16:00:26] INFO:  exit /b 1
+[16:00:26] INFO: )
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>where adb   | findstr /i "System32"  1>nul
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>if 1 == 0 (
+[16:00:26] INFO: echo [ERROR] Detected ADB in System32 folder!
+[16:00:26] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[16:00:26] INFO:  pause
+[16:00:26] INFO:  exit /b 1
+[16:00:26] INFO: )
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>echo Current adb path:
+[16:00:26] INFO: Current adb path:
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>where adb
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools\adb.exe
+[16:00:26] INFO: C:\platform-tools\adb.exe
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[16:00:26] INFO: 
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>adb version
+[16:00:26] INFO: Android Debug Bridge version 1.0.41
+[16:00:26] INFO: Version 31.0.3-7562133
+[16:00:26] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[16:00:26] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[16:00:26] INFO:  pause
+[16:00:26] INFO:  exit /b 1
+[16:00:26] INFO: )
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>adb kill-server
+[16:00:26] INFO: 
+[16:00:26] INFO: D:\MU310_FW\GUI_ADB_tools>adb start-server
+[16:00:28] INFO: 
+[16:00:28] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[16:00:28] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[16:00:28] INFO:  pause
+[16:00:28] INFO: [EXIT] code=0
+[16:00:28] INFO:  exit /b 1
+[16:00:28] INFO: )
+[16:00:28] INFO: 
+[16:00:28] INFO: D:\MU310_FW\GUI_ADB_tools>adb devices
+[16:00:28] INFO: List of devices attached
+[16:00:28] INFO: 109c377c	device
+[16:00:28] INFO: 
+[16:00:28] INFO: 
+[16:00:28] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[16:00:28] INFO: 
+[16:00:28] ERROR: * daemon not running; starting now at tcp:5037
+[16:00:28] ERROR: * daemon started successfully
+[16:00:32] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:00:44] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:00:44] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:00:44] INFO: ===============================================
+[16:00:44] INFO:    MU310 Firmware Flashing Tool v1.1
+[16:00:44] INFO: ===============================================
+[16:00:44] INFO: === Step 0: Check ADB version ===
+[16:00:44] INFO: Android Debug Bridge version 1.0.41
+[16:00:45] INFO: Version 31.0.3-7562133
+[16:00:45] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[16:00:47] INFO: 
+[16:00:47] INFO: === Step 1: Check ADB connection ===
+[16:00:47] INFO: Found device: 109c377c	device
+[16:00:47] INFO: [SUCCESS] ADB device connection normal
+[16:00:47] INFO: 
+[16:00:47] INFO: === Step 2: Check firmware file ===
+[16:00:47] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:00:47] INFO: 
+[16:00:47] INFO: === Step 3: Test write permission ===
+[16:00:47] INFO: ^C
+[16:00:47] INFO: rm: can't remove '/usrdata/cache/ufs/test.txt': No such file or directory
+[16:00:47] INFO: [SUCCESS] Target directory writable
+[16:00:47] INFO: 
+[16:00:47] INFO: === Step 4: Upload firmware ===
+[16:00:47] INFO: [4.1] Uploading firmware to device...
+[16:01:17] INFO: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin: 1 file pushed, 0 skipped. 3.9 MB/s (123185277 bytes in 29.989s)
+[16:01:17] INFO: [SUCCESS] Firmware upload completed
+[16:01:17] INFO: 
+[16:01:17] INFO: [4.2] Executing sync operation...
+[16:01:21] INFO: [SUCCESS] Sync operation completed
+[16:01:21] INFO: 
+[16:01:21] INFO: [4.3] Stopping related system services...
+[16:01:22] INFO: [SUCCESS] System services stopped
+[16:01:23] INFO: 
+[16:01:23] INFO: [4.4] Checking /dev/smd7...
+[16:01:23] INFO: [SUCCESS] /dev/smd7 status check completed
+[16:01:23] INFO: 
+[16:01:23] INFO: [4.5] Sending firmware update command...
+[16:01:25] INFO: [SUCCESS] Firmware flashing command sent
+[16:01:25] INFO: 
+[16:01:25] INFO: ===============================================
+[16:01:25] INFO: Notes:
+[16:01:25] INFO: 1. Please wait for device to complete firmware update
+[16:01:25] INFO: 2. Do not disconnect during update process
+[16:01:25] INFO: 3. Device may restart automatically
+[16:01:25] INFO: 4. The entire process may take several minutes
+[16:01:25] INFO: ===============================================
+[16:01:25] INFO: 
+[16:01:25] INFO: MU310 burn in PASS and please wait 4 mins for update.
+[16:09:47] INFO: Press any key to continue . . .
+[16:09:47] INFO: [SUCCESS] /dev/smd7 status check completed
+[16:09:47] INFO: 
+[16:09:47] INFO: [4.5] Sending firmware update command...
+[16:09:47] INFO: ython main.py
+[16:09:49] INFO: [SUCCESS] Firmware flashing command sent
+[16:09:49] INFO: 
+[16:09:49] INFO: ===============================================
+[16:09:49] INFO: Notes:
+[16:09:49] INFO: 1. Please wait for device to complete firmware update
+[16:09:49] INFO: 2. Do not disconnect during update process
+[16:09:49] INFO: 3. Device may restart automatically
+[16:09:49] INFO: 4. The entire process may take several minutes
+[16:09:49] INFO: ===============================================
+[16:09:49] INFO: 
+[16:09:49] INFO: MU310 burn in PASS and please wait 4 mins for update.
+[16:09:50] INFO: Press any key to continue . . .
+[16:09:50] INFO: [EXIT] code=0
+[16:09:50] ERROR: * daemon not running; starting now at tcp:5037
+[16:09:50] ERROR: * daemon started successfully
+[16:09:50] ERROR: The system cannot find the path specified.
+[16:10:25] INFO: 未選檔，改用預設: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:10:25] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:10:25] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:10:25] ERROR: ( was unexpected at this time.
+[16:10:25] INFO: [EXIT] code=255

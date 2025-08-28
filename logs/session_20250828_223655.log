@@ -1,0 +1,127 @@
+[22:37:05] INFO: Run Auto Fix...
+[22:37:05] INFO: [RUN] cmd /c chcp 65001 > nul & call "M:\PYTHON\MU310_FW_GUI-main\auto_fix_adb_ENG.bat"
+[22:37:05] INFO: 
+[22:37:05] INFO: M:\PYTHON\MU310_FW_GUI-main>chcp 65001  1>nul
+[22:37:05] INFO: 
+[22:37:05] INFO: M:\PYTHON\MU310_FW_GUI-main>delayedexpansion
+[22:37:05] INFO: 
+[22:37:05] INFO: M:\PYTHON\MU310_FW_GUI-main>B device connection...
+[22:37:05] INFO: 
+[22:37:05] INFO: M:\PYTHON\MU310_FW_GUI-main>t
+[22:37:05] INFO: 
+[22:37:05] INFO: M:\PYTHON\MU310_FW_GUI-main>b_check.txt  1>nul
+[22:37:05] INFO: 
+[22:37:05] INFO: M:\PYTHON\MU310_FW_GUI-main>echo ✅ ADB is connected, no fix needed.
+[22:37:06] INFO: ✅ ADB is connected, no fix needed.
+[22:37:06] INFO: 
+[22:37:06] INFO: M:\PYTHON\MU310_FW_GUI-main>pause
+[22:37:15] ERROR: Please select firmware (*.bin) first
+[22:37:20] INFO: Scan COM ports...
+[22:37:20] INFO: Found 3 COM ports:
+[22:37:20] INFO:   COM1- 通訊連接埠 (COM1)
+[22:37:20] INFO:   COM3- com0com - serial port emulator (COM3)
+[22:37:20] INFO:   COM4- com0com - serial port emulator (COM4)
+[22:38:15] INFO: Press any key to continue . . .
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>️ No ADB device detected. Attempting to fix...
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>ng AT command to set USB mode...
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>0 (
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>to send AT command. Cannot proceed with fix.
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>t /b
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>mand sent successfully. Waiting 90 seconds for reboot...
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>obreak  1>nul
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>echecking ADB device connection...
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>b_check.txt
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>evice$" adb_check.txt > nul
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>0 (
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>connection restored successfully!
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>cho ❌ ADB still not connected after fix. Please check the device manually.
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>heck.txt
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>/b
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>-------------------------
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>mments section below)
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>---------------------
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>1        → Set code page to UTF-8 1>nul
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>ices   → List ADB devices and save result 1>adb_check.txt
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>tr /R /C:"device$" adb_check.txt   → Check if device is connected 1>nul
+[22:38:15] INFO: 
+[22:38:15] INFO: M:\PYTHON\MU310_FW_GUI-main>adb_check.txt       → Delete temp file
+[22:38:18] INFO: 
+[22:38:18] INFO: M:\PYTHON\MU310_FW_GUI-main>ython fix_usbcfg.py    → Run Python script to fix USB config
+[22:38:18] INFO: 
+[22:38:18] INFO: M:\PYTHON\MU310_FW_GUI-main>timeout /t 90 /nobreak   → Wait 90 seconds for reboot 1>nul
+[22:38:18] ERROR: 'delayedexpansion' is not recognized as an internal or external command,
+[22:38:18] INFO: [EXIT] code=1
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'B' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 't' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'b_check.txt' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: '️' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'ng' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: '0' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'to' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 't' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'mand' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'obreak' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'echecking' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'b_check.txt' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'evice$" adb_check.txt > nul' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: '0' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'connection' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'cho' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'heck.txt' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: '/b' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: '-------------------------' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'mments' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: '---------------------' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: '1' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'ices' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'tr' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: 'ython' is not recognized as an internal or external command,
+[22:38:18] ERROR: operable program or batch file.
+[22:38:18] ERROR: ERROR: Invalid syntax. Default option is not allowed more than '1' time(s).
+[22:38:18] ERROR: Type "TIMEOUT /?" for usage.

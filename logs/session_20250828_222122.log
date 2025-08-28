@@ -1,0 +1,73 @@
+[22:21:30] ERROR: Please select firmware (*.bin) first
+[22:21:36] ERROR: Please select firmware (*.bin) first
+[22:21:37] ERROR: Please select firmware (*.bin) first
+[22:21:38] ERROR: Please select firmware (*.bin) first
+[22:21:41] INFO: 檢查 ADB 環境...
+[22:21:41] INFO: [RUN] cmd /c chcp 65001 > nul & call "M:\PYTHON\MU310_FW_GUI-main\ADB Environment Check.bat"
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>echo === Step 0: Check ADB Environment ===
+[22:21:41] INFO: === Step 0: Check ADB Environment ===
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>where adb  1>nul 2>nul
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>if 0 NEQ 0 (
+[22:21:41] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[22:21:41] INFO:  pause
+[22:21:41] INFO:  exit /b 1
+[22:21:41] INFO: )
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>where adb   | findstr /i "System32"  1>nul
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>if 1 == 0 (
+[22:21:41] INFO: echo [ERROR] Detected ADB in System32 folder!
+[22:21:41] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[22:21:41] INFO:  pause
+[22:21:41] INFO:  exit /b 1
+[22:21:41] INFO: )
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>echo Current adb path:
+[22:21:41] INFO: Current adb path:
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>where adb
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main\adb.exe
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>echo.
+[22:21:41] INFO: 
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>adb version
+[22:21:41] INFO: Android Debug Bridge version 1.0.41
+[22:21:41] INFO: Version 31.0.3-7562133
+[22:21:41] INFO: Installed as M:\PYTHON\MU310_FW_GUI-main\adb.exe
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>if 0 NEQ 0 (
+[22:21:41] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[22:21:41] INFO:  pause
+[22:21:41] INFO:  exit /b 1
+[22:21:41] INFO: )
+[22:21:41] INFO: 
+[22:21:41] INFO: M:\PYTHON\MU310_FW_GUI-main>adb kill-server
+[22:21:43] INFO: 
+[22:21:43] INFO: M:\PYTHON\MU310_FW_GUI-main>adb start-server
+[22:21:45] INFO: 
+[22:21:45] INFO: M:\PYTHON\MU310_FW_GUI-main>if 0 NEQ 0 (
+[22:21:45] INFO: [EXIT] code=0
+[22:21:45] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[22:21:45] INFO:  pause
+[22:21:45] INFO:  exit /b 1
+[22:21:45] INFO: )
+[22:21:45] INFO: 
+[22:21:45] INFO: M:\PYTHON\MU310_FW_GUI-main>adb devices
+[22:21:45] INFO: List of devices attached
+[22:21:45] INFO: 
+[22:21:45] INFO: 
+[22:21:45] INFO: M:\PYTHON\MU310_FW_GUI-main>echo.
+[22:21:45] INFO: 
+[22:21:45] ERROR: cannot connect to daemon at tcp:5037: cannot connect to 127.0.0.1:5037: 無法連線，因為目標電腦拒絕連線。 (10061)
+[22:21:45] ERROR: * daemon not running; starting now at tcp:5037
+[22:21:45] ERROR: * daemon started successfully
+[22:21:50] INFO: Scan COM ports...
+[22:21:50] INFO: Found 3 COM ports:
+[22:21:50] INFO:   COM1 - 通訊連接埠 (COM1)
+[22:21:50] INFO:   COM3 - com0com - serial port emulator (COM3)
+[22:21:50] INFO:   COM4 - com0com - serial port emulator (COM4)
+[22:23:36] INFO: Open help: M:\PYTHON\MU310_FW_GUI-main\assets\help.html

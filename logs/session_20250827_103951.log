@@ -1,0 +1,104 @@
+[10:40:07] INFO: 開始掃描 COM 埠...
+[10:40:07] WARNING: 未找到任何 COM 埠
+[10:40:13] INFO: 開始檢查 ADB 介面...
+[10:40:13] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\check ADB interface.bat"
+[10:40:13] INFO: ============================================
+[10:40:13] INFO:   Check Android ADB Interface
+[10:40:13] INFO: ============================================
+[10:40:14] INFO: [NOT FOUND] No ADB interface detected.
+[10:40:20] INFO: 開始檢查 ADB 介面...
+[10:40:20] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\check ADB interface.bat"
+[10:40:20] INFO: ============================================
+[10:40:20] INFO:   Check Android ADB Interface
+[10:40:20] INFO: ============================================
+[10:40:21] INFO: [NOT FOUND] No ADB interface detected.
+[10:40:22] INFO: 開始掃描 COM 埠...
+[10:40:22] WARNING: 未找到任何 COM 埠
+[10:40:26] INFO: 開始列出 ADB 裝置...
+[10:40:26] INFO: [RUN] cmd /c chcp 65001 > nul & adb devices
+[10:40:26] INFO: List of devices attached
+[10:40:26] INFO: [EXIT] code=0
+[10:40:26] INFO: 
+[10:40:29] INFO: 開始重啟 ADB 伺服器...
+[10:40:29] INFO: [RUN] cmd /c chcp 65001 > nul & adb kill-server & adb start-server
+[10:40:31] ERROR: * daemon not running; starting now at tcp:5037
+[10:40:31] INFO: [EXIT] code=0
+[10:40:31] ERROR: * daemon started successfully
+[10:40:38] INFO: 開始檢查 ADB 環境...
+[10:40:38] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\ADB Environment Check.bat"
+[10:40:38] INFO: 
+[10:40:38] INFO: D:\MU310_FW\GUI_ADB_tools>echo === Step 0: Check ADB Environment ===
+[10:40:38] INFO: === Step 0: Check ADB Environment ===
+[10:40:38] INFO: 
+[10:40:38] INFO: D:\MU310_FW\GUI_ADB_tools>where adb  1>nul 2>nul
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:40:39] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[10:40:39] INFO:  pause
+[10:40:39] INFO:  exit /b 1
+[10:40:39] INFO: )
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>where adb   | findstr /i "System32"  1>nul
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>if 1 == 0 (
+[10:40:39] INFO: echo [ERROR] Detected ADB in System32 folder!
+[10:40:39] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[10:40:39] INFO:  pause
+[10:40:39] INFO:  exit /b 1
+[10:40:39] INFO: )
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>echo Current adb path:
+[10:40:39] INFO: Current adb path:
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>where adb
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools\adb.exe
+[10:40:39] INFO: C:\platform-tools\adb.exe
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[10:40:39] INFO: 
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>adb version
+[10:40:39] INFO: Android Debug Bridge version 1.0.41
+[10:40:39] INFO: Version 31.0.3-7562133
+[10:40:39] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[10:40:39] INFO: 
+[10:40:39] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:40:39] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[10:40:39] INFO:  pause
+[10:40:40] INFO:  exit /b 1
+[10:40:40] INFO: )
+[10:40:40] INFO: 
+[10:40:40] INFO: D:\MU310_FW\GUI_ADB_tools>adb kill-server
+[10:40:40] INFO: 
+[10:40:40] INFO: D:\MU310_FW\GUI_ADB_tools>adb start-server
+[10:40:41] INFO: 
+[10:40:41] INFO: [EXIT] code=0
+[10:40:41] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:40:41] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[10:40:41] INFO:  pause
+[10:40:41] INFO:  exit /b 1
+[10:40:41] INFO: )
+[10:40:41] INFO: 
+[10:40:41] INFO: D:\MU310_FW\GUI_ADB_tools>adb devices
+[10:40:41] INFO: List of devices attached
+[10:40:41] INFO: 
+[10:40:41] INFO: 
+[10:40:41] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[10:40:41] INFO: 
+[10:40:41] ERROR: * daemon not running; starting now at tcp:5037
+[10:40:41] ERROR: * daemon started successfully
+[10:40:51] INFO: 開始列出 ADB 裝置...
+[10:40:51] INFO: [RUN] cmd /c chcp 65001 > nul & adb devices
+[10:40:51] INFO: List of devices attached
+[10:40:51] INFO: [EXIT] code=0
+[10:40:51] INFO: 
+[10:40:54] INFO: 開始檢查 ADB 介面...
+[10:40:54] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\check ADB interface.bat"
+[10:40:54] INFO: ============================================
+[10:40:54] INFO:   Check Android ADB Interface
+[10:40:54] INFO: ============================================
+[10:40:55] INFO: [NOT FOUND] No ADB interface detected.
+[10:40:55] INFO: 開始掃描 COM 埠...
+[10:40:55] WARNING: 未找到任何 COM 埠
+[10:40:57] INFO: Debug Mode ON
+[10:40:58] INFO: Debug Mode OFF

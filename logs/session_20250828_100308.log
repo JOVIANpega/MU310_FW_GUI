@@ -1,0 +1,168 @@
+[10:03:21] INFO: 開始執行 ADB 環境檢查...
+[10:03:21] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\ADB Environment Check.bat"
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>echo === Step 0: Check ADB Environment ===
+[10:03:21] INFO: === Step 0: Check ADB Environment ===
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>where adb  1>nul 2>nul
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:03:21] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[10:03:21] INFO:  pause
+[10:03:21] INFO:  exit /b 1
+[10:03:21] INFO: )
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>where adb   | findstr /i "System32"  1>nul
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>if 1 == 0 (
+[10:03:21] INFO: echo [ERROR] Detected ADB in System32 folder!
+[10:03:21] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[10:03:21] INFO:  pause
+[10:03:21] INFO:  exit /b 1
+[10:03:21] INFO: )
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>echo Current adb path:
+[10:03:21] INFO: Current adb path:
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>where adb
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools\adb.exe
+[10:03:21] INFO: C:\platform-tools\adb.exe
+[10:03:21] INFO: 
+[10:03:21] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[10:03:21] INFO: 
+[10:03:21] INFO: 
+[10:03:22] INFO: D:\MU310_FW\GUI_ADB_tools>adb version
+[10:03:22] INFO: Android Debug Bridge version 1.0.41
+[10:03:22] INFO: Version 31.0.3-7562133
+[10:03:22] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[10:03:22] INFO: 
+[10:03:22] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:03:22] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[10:03:22] INFO:  pause
+[10:03:22] INFO:  exit /b 1
+[10:03:22] INFO: )
+[10:03:22] INFO: 
+[10:03:22] INFO: D:\MU310_FW\GUI_ADB_tools>adb kill-server
+[10:03:22] INFO: 
+[10:03:22] INFO: D:\MU310_FW\GUI_ADB_tools>adb start-server
+[10:03:23] INFO: 
+[10:03:23] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:03:23] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[10:03:24] INFO: [EXIT] code=0
+[10:03:24] INFO:  pause
+[10:03:24] INFO:  exit /b 1
+[10:03:24] INFO: )
+[10:03:24] INFO: 
+[10:03:24] INFO: D:\MU310_FW\GUI_ADB_tools>adb devices
+[10:03:24] INFO: List of devices attached
+[10:03:24] INFO: 109c377c	device
+[10:03:24] INFO: 
+[10:03:24] INFO: 
+[10:03:24] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[10:03:24] INFO: 
+[10:03:24] ERROR: * daemon not running; starting now at tcp:5037
+[10:03:24] ERROR: * daemon started successfully
+[10:03:34] INFO: 開始執行自動修復...
+[10:03:34] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\auto_fix_adb_ENG.bat"
+[10:03:34] INFO: 
+[10:03:34] INFO: D:\MU310_FW\GUI_ADB_tools>chcp 65001  1>nul
+[10:03:34] INFO: [STEP 1] Checking ADB device connection...
+[10:03:34] INFO: ✅ ADB is connected, no fix needed.
+[10:03:45] INFO: 開始檢查 DM 埠...
+[10:03:45] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\checkDMport_ENG.bat"
+[10:03:45] INFO: ===============================================
+[10:03:45] INFO:    MU310 Firmware Flashing Tool v1.0
+[10:03:45] INFO: ===============================================
+[10:03:45] INFO: === Step 1: Check ADB Connection ===
+[10:03:45] INFO: Running adb devices...
+[10:03:45] INFO: Device found: 109c377c	device
+[10:03:45] INFO: [OK] ADB device connected.
+[10:03:45] INFO: 
+[10:03:45] INFO: === Step 2: Check DM PORT ===
+[10:03:46] INFO: Found DM PORT: Quectel USB DM Port (COM7)
+[10:03:46] INFO: [OK] DM PORT found = COM7
+[10:03:46] INFO: 
+[10:03:46] INFO: === Step 3: Check Firmware File ===
+[10:03:46] INFO: [ERROR] Firmware file not found: MU310-Q612_V0.0.0.0_1_modem.bin
+[10:03:46] INFO: Please ensure the firmware file exists in the correct path.
+[10:04:32] INFO: 開始執行 ADB 環境檢查...
+[10:04:32] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\ADB Environment Check.bat"
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>echo === Step 0: Check ADB Environment ===
+[10:04:32] INFO: === Step 0: Check ADB Environment ===
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>where adb  1>nul 2>nul
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:04:32] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[10:04:32] INFO:  pause
+[10:04:32] INFO:  exit /b 1
+[10:04:32] INFO: )
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>where adb   | findstr /i "System32"  1>nul
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>if 1 == 0 (
+[10:04:32] INFO: echo [ERROR] Detected ADB in System32 folder!
+[10:04:32] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[10:04:32] INFO:  pause
+[10:04:32] INFO:  exit /b 1
+[10:04:32] INFO: )
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>echo Current adb path:
+[10:04:32] INFO: Current adb path:
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>where adb
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools\adb.exe
+[10:04:32] INFO: C:\platform-tools\adb.exe
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[10:04:32] INFO: 
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>adb version
+[10:04:32] INFO: Android Debug Bridge version 1.0.41
+[10:04:32] INFO: Version 31.0.3-7562133
+[10:04:32] INFO: Installed as D:\MU310_FW\GUI_ADB_tools\adb.exe
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:04:32] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[10:04:32] INFO:  pause
+[10:04:32] INFO:  exit /b 1
+[10:04:32] INFO: )
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>adb kill-server
+[10:04:32] INFO: 
+[10:04:32] INFO: D:\MU310_FW\GUI_ADB_tools>adb start-server
+[10:04:34] INFO: 
+[10:04:34] INFO: D:\MU310_FW\GUI_ADB_tools>if 0 NEQ 0 (
+[10:04:34] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[10:04:34] INFO: [EXIT] code=0
+[10:04:34] INFO:  pause
+[10:04:34] INFO:  exit /b 1
+[10:04:34] INFO: )
+[10:04:34] INFO: 
+[10:04:34] INFO: D:\MU310_FW\GUI_ADB_tools>adb devices
+[10:04:34] INFO: List of devices attached
+[10:04:34] INFO: 109c377c	device
+[10:04:34] INFO: 
+[10:04:34] INFO: 
+[10:04:34] INFO: D:\MU310_FW\GUI_ADB_tools>echo.
+[10:04:34] INFO: 
+[10:04:34] ERROR: * daemon not running; starting now at tcp:5037
+[10:04:34] ERROR: * daemon started successfully
+[10:04:43] INFO: 開始檢查 DM 埠...
+[10:04:43] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\checkDMport_ENG.bat"
+[10:04:43] INFO: ===============================================
+[10:04:43] INFO:    MU310 Firmware Flashing Tool v1.0
+[10:04:43] INFO: ===============================================
+[10:04:43] INFO: === Step 1: Check ADB Connection ===
+[10:04:43] INFO: Running adb devices...
+[10:04:43] INFO: Device found: 109c377c	device
+[10:04:43] INFO: [OK] ADB device connected.
+[10:04:43] INFO: 
+[10:04:43] INFO: === Step 2: Check DM PORT ===
+[10:04:44] INFO: Found DM PORT: Quectel USB DM Port (COM7)
+[10:04:44] INFO: [OK] DM PORT found = COM7
+[10:04:44] INFO: 
+[10:04:44] INFO: === Step 3: Check Firmware File ===
+[10:04:44] INFO: [ERROR] Firmware file not found: MU310-Q612_V0.0.0.0_1_modem.bin
+[10:04:44] INFO: Please ensure the firmware file exists in the correct path.

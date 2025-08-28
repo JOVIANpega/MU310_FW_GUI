@@ -1,0 +1,21 @@
+[16:37:03] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:37:05] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:37:05] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:37:05] ERROR: '含路徑)，組成' is not recognized as an internal or external command,
+[16:37:05] INFO: [EXIT] code=255
+[16:37:05] ERROR: operable program or batch file.
+[16:37:05] ERROR: ( was unexpected at this time.
+[16:37:07] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin
+[16:37:07] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q612EB_V1.1.0.0_1_modem.bin"
+[16:37:07] ERROR: ( was unexpected at this time.
+[16:37:07] INFO: [EXIT] code=255
+[16:37:16] INFO: 已選擇韌體檔案: D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:37:17] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:37:17] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:37:17] ERROR: ( was unexpected at this time.
+[16:37:17] INFO: [EXIT] code=255
+[16:37:53] INFO: 已選擇韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:37:55] INFO: 開始執行韌體升級，使用檔案: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[16:37:55] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[16:37:55] ERROR: ( was unexpected at this time.
+[16:37:55] INFO: [EXIT] code=255
