@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MU310 工具中心 使用說明</title>
+  <style>
+    body{font-family: Segoe UI, Noto Sans TC, Arial, sans-serif; margin:24px; color:#222; line-height:1.6}
+    h1{font-size:22px; margin-bottom:8px}
+    h2{font-size:18px; margin-top:20px}
+    h3{font-size:16px; margin-top:16px}
+    code,pre{background:#f6f8fa; border:1px solid #eaecef; border-radius:6px; padding:2px 6px}
+    .en{color:#555; font-style:italic}
+    ul{margin:8px 0 16px 20px}
+    ol{margin:8px 0 16px 20px}
+    .tag{display:inline-block; background:#e6f2ff; border:1px solid #cfe8ff; border-radius:4px; padding:2px 6px; margin-right:6px}
+    .box{background:#fffbe6; border:1px solid #ffe58f; border-radius:6px; padding:10px;}
+  </style>
+</head>
+<body>
+  <h1>MU310 工具中心 使用說明 <span class="en">(MU310 Tools Center - User Guide)</span></h1>
+
+  <h2>總覽 <span class="en">Overview</span></h2>
+  <ul>
+    <li><span class="tag">ADB 工具</span> 檢查 ADB 環境、列出裝置/COM 埠。</li>
+    <li><span class="tag">連線修復</span> 一鍵執行 <code>auto_fix_adb_ENG.bat</code> 修復連線。</li>
+    <li><span class="tag">韌體升級</span> 選擇 <code>.bin</code> 檔，呼叫 <code>Burn_in _611GT.bat</code> 升級。</li>
+    <li><span class="tag">說明</span> 本頁文件。</li>
+  </ul>
+  <ul class="en">
+    <li>ADB Tools: check ADB and list devices/COM ports.</li>
+    <li>Connection Fix: run <code>auto_fix_adb_ENG.bat</code>.</li>
+    <li>Firmware Upgrade: select a <code>.bin</code> and run <code>Burn_in _611GT.bat</code>.</li>
+    <li>Help: this document.</li>
+  </ul>
+
+  <h2>安裝與執行 <span class="en">Install & Run</span></h2>
+  <ol>
+    <li>安裝驅動：若 ADB 無法辨識裝置，請先安裝對應 USB/ADB 驅動。</li>
+    <li>將韌體檔放入 <code>FW_IMAGE\</code> 資料夾（或稍後從瀏覽視窗選取完整路徑）。</li>
+    <li>執行 <code>MU310_ADB_TOOLl.exe</code>（或 <code>python main.py</code>）。</li>
+    <li>右上角可切換語言與調整字體大小（會影響按鈕、標籤與彈窗）。</li>
+  </ol>
+
+  <h2>各分頁操作 <span class="en">Tabs</span></h2>
+  <h3>ADB 工具 <span class="en">ADB Tools</span></h3>
+  <ul>
+    <li>執行「檢查 ADB 環境」確認安裝與 PATH。</li>
+    <li>「列出 COM 埠」可列示系統可見的序列埠。</li>
+  </ul>
+
+  <h3>連線修復 <span class="en">Connection Fix</span></h3>
+  <ul>
+    <li>按「執行自動修復」即呼叫 <code>auto_fix_adb_ENG.bat</code>；完成後可回到 ADB 工具檢查。</li>
+  </ul>
+
+  <h3>韌體升級 <span class="en">Firmware Upgrade</span></h3>
+  <ol>
+    <li>按「瀏覽」選擇 <code>.bin</code> 檔（建議放在 <code>FW_IMAGE\</code>；路徑過長會以中間省略顯示）。</li>
+    <li>按「執行韌體升級」；日誌會連續顯示 push/sync/停服務/觸發更新等進度。</li>
+    <li>也可直接執行批次檔：<br/>
+      <code>"Burn_in _611GT.bat" &lt;firmware.bin or full path&gt;</code></li>
+  </ol>
+
+  <h3>設定 <span class="en">Settings</span></h3>
+  <ul>
+    <li>可自訂 GUI 標題（<b>Title (EN)</b>、<b>中文標題</b>）。</li>
+    <li>按「<b>儲存設定</b>」即刻生效，並寫入 <code>config.json</code>。</li>
+    <li>語言切換時會使用對應語系的自訂標題；若空白則退回預設。</li>
+  </ul>
+
+  <div class="box">
+    <b>注意 Notes</b>
+    <ul>
+      <li>升級期間請勿斷線；裝置可能自動重啟，需數分鐘。</li>
+      <li>若批次檔顯示找不到檔案，確認檔名與 <code>FW_IMAGE\</code> 位置或使用完整路徑。</li>
+    </ul>
+  </div>
+
+  <h2>常見問題 <span class="en">FAQ</span></h2>
+  <h3>Q1: 看到 "Firmware file not found"？</h3>
+  <p>請確認檔案在 <code>FW_IMAGE\</code> 且檔名正確，或於 GUI 重新選擇。</p>
+  <h3>Q2: ADB 無法偵測到裝置？</h3>
+  <p>檢查 USB 線與驅動、裝置的 USB 偵錯模式；於「ADB 工具」分頁按「檢查 ADB 環境」。</p>
+  <h3>Q3: 想重看過往輸出？</h3>
+  <p>所有輸出會自動寫入 <code>logs/</code>。GUI 內的日誌也會連續累加，不會自動清空。</p>
+
+  <h2 class="en">English Summary</h2>
+  <p class="en">Use ADB Tools to verify environment, Connection Fix to auto-run fixes, and Firmware Upgrade to flash via <code>Burn_in _611GT.bat</code>. Put firmware into <code>FW_IMAGE\</code>, select it, then run upgrade. See logs for progress.</p>
+</body>
+</html> 
