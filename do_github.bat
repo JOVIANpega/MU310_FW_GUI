@@ -50,7 +50,16 @@ git add -A
 git diff --cached --quiet && echo No changes to commit. || git commit -m "chore: sync workspace" || goto :fail
 
 echo ===== Step 5: push to origin/main =====
-git push -u origin main || goto :fail
+echo Fetching remote updates...
+git fetch origin || goto :fail
+
+echo Attempting to push...
+git push -u origin main
+if errorlevel 1 (
+    echo Push was rejected, trying to pull with rebase and retry...
+    git pull --rebase origin main || goto :fail
+    git push -u origin main || goto :fail
+)
 
 echo.
 echo Done. Open GitHub to verify the repository was updated.
