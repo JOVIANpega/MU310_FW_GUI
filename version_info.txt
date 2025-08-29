@@ -1,8 +1,8 @@
 # UTF-8 with BOM not required
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(0,1,0,0),
-    prodvers=(0,1,0,0),
+    filevers=(1,8,2,0),
+    prodvers=(1,8,2,0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -15,14 +15,15 @@ VSVersionInfo(
       StringTable(
         '040904B0',
         [
-          StringStruct('CompanyName', 'MU310 Tools'),
-          StringStruct('FileDescription', 'MU310 ADB Tool'),
-          StringStruct('FileVersion', ' =-週四202508_28.6148'),
+          StringStruct('CompanyName', 'MU310 Tools Center'),
+          StringStruct('FileDescription', 'MU310 ADB Tools Center - GUI for ADB tools, connection fix, firmware upgrade, and keyword color settings'),
+          StringStruct('FileVersion', ' =-週五202508_29.26151'),
           StringStruct('InternalName', 'MU310_ADB_TOOLl'),
-          StringStruct('LegalCopyright', '© 2025'),
+          StringStruct('LegalCopyright', '© 2025 MU310 Tools Center'),
           StringStruct('OriginalFilename', 'MU310_ADB_TOOLl.exe'),
-          StringStruct('ProductName', 'MU310 ADB Tool'),
-          StringStruct('ProductVersion', ' =-週四202508_28.6148')
+          StringStruct('ProductName', 'MU310 ADB Tools Center'),
+          StringStruct('ProductVersion', ' =-週五202508_29.26151'),
+          StringStruct('Comments', 'Build: 週五202508_29.26151 - Includes ADB tools, connection fix, firmware upgrade, settings, and keyword color editor')
         ]
       )
     ]),

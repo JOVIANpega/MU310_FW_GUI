@@ -145,21 +145,24 @@ graph TD
     python main.py
     ```
 - 打包為單一 EXE（發佈建議）
-  - 準備 `assets/icon.ico`
-  - 發佈版（無 Console）：
+  - 建議直接執行根目錄的 `build.bat`，會自動：
+    - 準備 `assets/icon.ico`（由現有 ico 複製）
+    - 產生 `version_info.txt`（寫入 `__version__-__build__`）
+    - 打包並輸出至 `release/`
+  - 若需手動執行 PyInstaller：
     ```powershell
     pyinstaller --onefile --noconsole --icon=assets/icon.ico main.py
     ```
-  - 或使用專案提供的 `build.bat` 批次檔進行打包
 
 ## 使用說明
 1. **啟動程式**：執行 `main.py` 或打包後的 EXE 檔案
-2. **選擇功能**：點擊對應的標籤頁（ADB 工具、連線修復、韌體升級）
+2. **選擇功能**：點擊對應的標籤頁（ADB 工具、連線修復、韌體升級、設定）
 3. **執行操作**：點擊功能按鈕，觀察狀態標籤的即時更新
 4. **查看日誌**：在對應標籤頁的日誌區域查看詳細執行記錄
 5. **除錯模式**：勾選除錯模式可查看更詳細的執行資訊
 6. **語言切換**：右上角可即時切換中英文介面
 7. **字體調整**：右上角可調整全域字體大小
+8. **設定分頁**：可自訂 GUI 標題（中/英），按「儲存設定」立即生效並寫入 `config.json`
 
 ## 注意事項
 - 日誌會連續累加，不會自動清空，方便查看完整執行歷史

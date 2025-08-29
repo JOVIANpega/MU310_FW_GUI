@@ -20,6 +20,8 @@ class GuiLogger:
         self.i18n = i18n or I18N("EN")
         # self._build_logs_tab(logs_tab_parent)  # 已移除
         self._setup_colors()
+        self.custom_keywords = {}  # 存放自訂關鍵字
+        self._load_keywords_from_file()  # 載入自訂關鍵字
 
     def _setup_colors(self):
         """設定文字顏色標籤"""
@@ -35,6 +37,52 @@ class GuiLogger:
             "USB": "#4B0082",          # 靛色 - USB 相關
             "FOTA": "#FF1493",         # 深粉紅色 - FOTA 相關
         }
+
+    def _load_keywords_from_file(self):
+        """從 keywords.txt 檔案載入自訂關鍵字"""
+        try:
+            # 優先使用當前目錄的 keywords.txt
+            keywords_file = os.path.join(os.getcwd(), "keywords.txt")
+            if not os.path.exists(keywords_file):
+                # 如果當前目錄沒有，嘗試使用資源路徑
+                try:
+                    from utils_paths import get_resource_path
+                    keywords_file = get_resource_path("keywords.txt")
+                except:
+                    return
+            
+            if not os.path.exists(keywords_file):
+                return
+                
+            with open(keywords_file, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+            
+            self.custom_keywords = {}
+            for line in lines:
+                line = line.strip()
+                # 跳過註解和空行
+                if not line or line.startswith('#'):
+                    continue
+                
+                # 解析 關鍵字=顏色 格式
+                if '=' in line:
+                    try:
+                        keyword, color = line.split('=', 1)
+                        keyword = keyword.strip()
+                        color = color.strip()
+                        
+                        # 驗證顏色格式（必須是 #RRGGBB 格式）
+                        if re.match(r'^#[0-9A-Fa-f]{6}$', color):
+                            self.custom_keywords[keyword] = color
+                        else:
+                            print(f"警告：無效的顏色代碼 '{color}' for keyword '{keyword}'")
+                    except Exception as e:
+                        print(f"警告：無法解析關鍵字設定 '{line}': {e}")
+            
+            print(f"已載入 {len(self.custom_keywords)} 個自訂關鍵字")
+            
+        except Exception as e:
+            print(f"載入關鍵字檔案失敗：{e}")
 
     def _init_logfile(self):
         os.makedirs("logs", exist_ok=True)
@@ -129,49 +177,90 @@ class GuiLogger:
     def _insert_colored_message(self, text_widget, message):
         """插入帶顏色的訊息，關鍵字會用不同顏色顯示"""
         try:
-            # 定義關鍵字和對應顏色
-            keywords = {
-                r'\b(ADB|adb)\b': 'ADB',
-                r'\b(USB|usb)\b': 'USB',
-                r'\b(COM\d+)\b': 'PORT',
-                r'\b(DM\s+PORT|DM_PORT)\b': 'PORT',
-                r'\b(FOTA|fota)\b': 'FOTA',
-                r'\b(device|Device|DEVICE)\b': 'DEVICE',
-                r'\b(success|Success|SUCCESS)\b': 'SUCCESS',
-                r'\b(error|Error|ERROR)\b': 'ERROR',
-                r'\b(warning|Warning|WARNING)\b': 'WARNING',
-                r'\b(failed|Failed|FAILED)\b': 'ERROR',
-                r'\b(connected|Connected|CONNECTED)\b': 'SUCCESS',
-                r'\b(disconnected|Disconnected|DISCONNECTED)\b': 'WARNING',
-                r'\b(reboot|Reboot|REBOOT)\b': 'WARNING',
-                r'\b(upgrade|Upgrade|UPGRADE)\b': 'FOTA',
-                r'\b(firmware|Firmware|FIRMWARE)\b': 'FOTA',
+            # 建立所有關鍵字的列表（自訂關鍵字 + 系統預設關鍵字）
+            all_keywords = []
+            
+            # 1. 加入自訂關鍵字（優先處理，因為使用者定義的更精確）
+            for keyword, color in self.custom_keywords.items():
+                # 為每個自訂關鍵字建立 tag
+                tag_name = f"custom_{keyword}"
+                all_keywords.append((keyword, tag_name, color))
+            
+            # 2. 加入系統預設關鍵字
+            default_keywords = {
+                r'\b(ADB|adb)\b': ('ADB', self.colors.get('ADB', '#FF4500')),
+                r'\b(USB|usb)\b': ('USB', self.colors.get('USB', '#4B0082')),
+                r'\b(COM\d+)\b': ('PORT', self.colors.get('PORT', '#008080')),
+                r'\b(DM\s+PORT|DM_PORT)\b': ('PORT', self.colors.get('PORT', '#008080')),
+                r'\b(FOTA|fota)\b': ('FOTA', self.colors.get('FOTA', '#FF1493')),
+                r'\b(device|Device|DEVICE)\b': ('DEVICE', self.colors.get('DEVICE', '#800080')),
+                r'\b(success|Success|SUCCESS)\b': ('SUCCESS', self.colors.get('SUCCESS', '#008000')),
+                r'\b(error|Error|ERROR)\b': ('ERROR', self.colors.get('ERROR', '#FF0000')),
+                r'\b(warning|Warning|WARNING)\b': ('WARNING', self.colors.get('WARNING', '#FF8C00')),
+                r'\b(failed|Failed|FAILED)\b': ('ERROR', self.colors.get('ERROR', '#FF0000')),
+                r'\b(connected|Connected|CONNECTED)\b': ('SUCCESS', self.colors.get('SUCCESS', '#008000')),
+                r'\b(disconnected|Disconnected|DISCONNECTED)\b': ('WARNING', self.colors.get('WARNING', '#FF8C00')),
+                r'\b(reboot|Reboot|REBOOT)\b': ('WARNING', self.colors.get('WARNING', '#FF8C00')),
+                r'\b(upgrade|Upgrade|UPGRADE)\b': ('FOTA', self.colors.get('FOTA', '#FF1493')),
+                r'\b(firmware|Firmware|FIRMWARE)\b': ('FOTA', self.colors.get('FOTA', '#FF1493')),
             }
             
-            # 分割訊息為關鍵字和一般文字
-            remaining_text = message
+            # 按關鍵字長度排序，較長的優先處理（避免短關鍵字覆蓋長關鍵字）
+            all_keywords.sort(key=lambda x: len(x[0]), reverse=True)
+            
+            # 使用簡單的字串替換方式
+            processed_text = message
+            replacements = []  # 儲存 (start_pos, end_pos, tag_name, color)
+            
+            # 先處理自訂關鍵字
+            for keyword, tag_name, color in all_keywords:
+                # 找出所有匹配位置
+                start = 0
+                while True:
+                    pos = processed_text.find(keyword, start)
+                    if pos == -1:
+                        break
+                    replacements.append((pos, pos + len(keyword), tag_name, color))
+                    start = pos + 1
+            
+            # 再處理系統預設關鍵字（regex）
+            for pattern, (tag_name, color) in default_keywords.items():
+                matches = list(re.finditer(pattern, processed_text, re.IGNORECASE))
+                for match in matches:
+                    start, end = match.span()
+                    # 檢查是否與自訂關鍵字重疊，如果重疊則跳過
+                    overlaps = False
+                    for r_start, r_end, _, _ in replacements:
+                        if not (end <= r_start or start >= r_end):  # 有重疊
+                            overlaps = True
+                            break
+                    if not overlaps:
+                        replacements.append((start, end, tag_name, color))
+            
+            # 按位置排序
+            replacements.sort(key=lambda x: x[0])
+            
+            # 插入文字並套用顏色
             current_pos = 0
-            
-            for pattern, color_tag in keywords.items():
-                matches = list(re.finditer(pattern, remaining_text, re.IGNORECASE))
-                if matches:
-                    for match in reversed(matches):  # 從後往前處理，避免位置偏移
-                        start, end = match.span()
-                        # 插入關鍵字前的文字
-                        if start > current_pos:
-                            text_widget.insert(tk.END, remaining_text[current_pos:start])
-                        # 插入關鍵字（帶顏色）
-                        keyword = remaining_text[start:end]
-                        text_widget.insert(tk.END, keyword, color_tag)
-                        text_widget.tag_config(color_tag, foreground=self.colors.get(color_tag, "black"))
-                        current_pos = end
-            
-            # 插入剩餘文字
-            if current_pos < len(remaining_text):
-                text_widget.insert(tk.END, remaining_text[current_pos:])
+            for start, end, tag_name, color in replacements:
+                # 插入關鍵字前的普通文字
+                if start > current_pos:
+                    text_widget.insert(tk.END, processed_text[current_pos:start])
                 
-        except Exception:
+                # 插入關鍵字（帶顏色）
+                keyword_text = processed_text[start:end]
+                text_widget.insert(tk.END, keyword_text, tag_name)
+                text_widget.tag_config(tag_name, foreground=color)
+                
+                current_pos = end
+            
+            # 插入剩餘的普通文字
+            if current_pos < len(processed_text):
+                text_widget.insert(tk.END, processed_text[current_pos:])
+                
+        except Exception as e:
             # 如果彩色處理失敗，直接插入原始訊息
+            print(f"顏色處理失敗：{e}")
             text_widget.insert(tk.END, message)
 
     def log(self, message, *, level="INFO", tab_name: str = "all"):
