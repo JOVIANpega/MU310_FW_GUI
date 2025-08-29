@@ -49,7 +49,20 @@ findstr /c:"version_info.txt" .gitignore >nul || echo version_info.txt>>.gitigno
 rem Add more ignore rules as you need above
 git add .gitignore
 
-echo ===== Step 4: stage and commit changes =====
+echo ===== Step 4: check version info =====
+echo Checking version information...
+if exist "version.py" (
+    for /f "usebackq tokens=2 delims== " %%v in (`findstr /r /c:"^__version__\s*=\s*\".*\"" version.py`) do set VERSION=%%v
+    set VERSION=!VERSION: =!
+    set VERSION=!VERSION:\"=!
+    set VERSION=!VERSION:"=!
+    echo Current version: !VERSION!
+) else (
+    set VERSION=unknown
+    echo Warning: version.py not found
+)
+
+echo ===== Step 5: stage and commit changes =====
 git add -A
 
 rem 檢查是否有變更需要提交
@@ -57,7 +70,7 @@ git diff --cached --quiet
 if errorlevel 1 (
     rem 有變更，生成描述性提交訊息
     echo Generating commit message...
-    set COMMIT_MSG=feat: update MU310 Tools Center v1.8.2
+    set COMMIT_MSG=feat: update MU310 Tools Center v!VERSION!
     set COMMIT_MSG=!COMMIT_MSG! - Add keyword color editor, fix settings layout
     set COMMIT_MSG=!COMMIT_MSG!, improve help.html, update build.bat
     echo Commit message: !COMMIT_MSG!
@@ -66,7 +79,7 @@ if errorlevel 1 (
     echo No changes to commit.
 )
 
-echo ===== Step 5: push to origin/main =====
+echo ===== Step 6: push to origin/main =====
 echo Fetching remote updates...
 git fetch origin || goto :fail
 
