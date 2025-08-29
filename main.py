@@ -455,23 +455,27 @@ class App(tk.Tk):
 
         # 標題
         self.settings_title_label = ttk.Label(frame, text=self._s_text("title"))
-        self.settings_title_label.grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 10))
+        self.settings_title_label.grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 20))
 
+        # 標題設定區域 - 用 LabelFrame 分組
+        title_frame = ttk.LabelFrame(frame, text="應用程式標題設定", padding=(10, 5))
+        title_frame.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(0, 20))
+        
         # EN 標題
-        self.settings_lbl_en = ttk.Label(frame, text=self._s_text("label_en"))
-        self.settings_lbl_en.grid(row=1, column=0, sticky="e", padx=(0, 8))
+        self.settings_lbl_en = ttk.Label(title_frame, text=self._s_text("label_en"))
+        self.settings_lbl_en.grid(row=0, column=0, sticky="e", padx=(0, 8), pady=5)
         self.title_en_var = tk.StringVar(value=self.config_data.get("title_en", ""))
         v_en = (self.register(self._validate_title_input), '%P')
-        ent_en = ttk.Entry(frame, textvariable=self.title_en_var, width=30, validate='key', validatecommand=v_en)
-        ent_en.grid(row=1, column=1, sticky="w", pady=2)
+        ent_en = ttk.Entry(title_frame, textvariable=self.title_en_var, width=30, validate='key', validatecommand=v_en)
+        ent_en.grid(row=0, column=1, sticky="w", pady=5)
 
         # ZH 標題
-        self.settings_lbl_zh = ttk.Label(frame, text=self._s_text("label_zh"))
-        self.settings_lbl_zh.grid(row=2, column=0, sticky="e", padx=(0, 8))
+        self.settings_lbl_zh = ttk.Label(title_frame, text=self._s_text("label_zh"))
+        self.settings_lbl_zh.grid(row=1, column=0, sticky="e", padx=(0, 8), pady=5)
         self.title_zh_var = tk.StringVar(value=self.config_data.get("title_zh", ""))
         v_zh = (self.register(self._validate_title_input), '%P')
-        ent_zh = ttk.Entry(frame, textvariable=self.title_zh_var, width=30, validate='key', validatecommand=v_zh)
-        ent_zh.grid(row=2, column=1, sticky="w", pady=2)
+        ent_zh = ttk.Entry(title_frame, textvariable=self.title_zh_var, width=30, validate='key', validatecommand=v_zh)
+        ent_zh.grid(row=1, column=1, sticky="w", pady=5)
 
         # 若設定值空白，預設帶入 i18n 的標題（避免首次顯示為空）
         try:
@@ -482,17 +486,34 @@ class App(tk.Tk):
         except Exception:
             pass
 
-        # 儲存按鈕
+        # 關鍵字設定區域 - 用 LabelFrame 分組
+        keywords_frame = ttk.LabelFrame(frame, text="日誌關鍵字顏色設定", padding=(10, 5))
+        keywords_frame.grid(row=2, column=0, columnspan=2, sticky="ew", pady=(0, 20))
+        
+        self.settings_btn_keywords = ttk.Button(
+            keywords_frame,
+            text="編輯關鍵字顏色",
+            style="Handover.TButton",
+            command=self.on_edit_keywords,
+        )
+        self.settings_btn_keywords.pack(pady=10)
+
+        # 操作按鈕區域 - 置中對齊
+        button_frame = ttk.Frame(frame)
+        button_frame.grid(row=3, column=0, columnspan=2, sticky="ew", pady=(20, 0))
+        
+        # 儲存按鈕置中
         self.settings_btn_save = ttk.Button(
-            frame,
+            button_frame,
             text=self._s_text("save_btn"),
-            style="Accent.TButton",
+            style="Handover.TButton",
             command=self.on_save_settings,
         )
-        self.settings_btn_save.grid(row=3, column=1, sticky="e", pady=(12, 0))
+        self.settings_btn_save.pack(expand=True)
 
-        # 固定欄寬顯示 30 字元，不需撐滿
-        # frame.columnconfigure(1, weight=1)
+        # 讓欄位自動撐滿
+        frame.columnconfigure(0, weight=1)
+        frame.columnconfigure(1, weight=1)
 
     def _validate_title_input(self, proposed: str) -> bool:
         """限制標題輸入長度至 30 字元。"""
@@ -896,6 +917,142 @@ class App(tk.Tk):
                 right = right[-max(8, len(right) - 2) :]
                 s = left + sep + "/" + right
         return s
+
+    def on_edit_keywords(self):
+        """開啟關鍵字顏色編輯視窗"""
+        KeywordsEditor(self)
+
+
+class KeywordsEditor:
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = tk.Toplevel(parent)
+        self.window.title("關鍵字顏色設定")
+        self.window.geometry("700x600")  # 增加視窗大小
+        self.window.resizable(True, True)
+        
+        # 設定最小視窗大小，確保按鈕可見
+        self.window.minsize(600, 500)
+        
+        # 設定視窗置中
+        self.window.transient(parent)
+        self.window.grab_set()
+        
+        self._build_ui()
+        self._load_keywords()
+
+    def _build_ui(self):
+        # 標題
+        title_label = ttk.Label(self.window, text="關鍵字顏色設定", font=("Segoe UI", 14, "bold"))
+        title_label.pack(pady=(20, 10))
+
+        # 說明文字
+        help_text = "格式：關鍵字=顏色代碼 (如: adb device=#FF0000)"
+        help_label = ttk.Label(self.window, text=help_text, foreground="gray")
+        help_label.pack(pady=(0, 20))
+
+        # 文字編輯區域
+        text_frame = ttk.Frame(self.window)
+        text_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 20))
+
+        # 文字編輯器
+        self.text_editor = tk.Text(text_frame, wrap=tk.WORD, font=("Consolas", 10))
+        self.text_editor.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # 捲軸
+        scrollbar = ttk.Scrollbar(text_frame, orient=tk.VERTICAL, command=self.text_editor.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.text_editor.config(yscrollcommand=scrollbar.set)
+
+        # 按鈕區域 - 修正佈局問題
+        button_frame = ttk.Frame(self.window)
+        button_frame.pack(fill=tk.X, padx=20, pady=(0, 20))
+        
+        # 確保按鈕區域有固定高度，防止被擠壓
+        button_frame.configure(height=60)
+        button_frame.pack_propagate(False)  # 防止子元件影響父元件大小
+
+        # 重新載入按鈕
+        reload_btn = ttk.Button(
+            button_frame,
+            text="重新載入",
+            command=self._reload_keywords
+        )
+        reload_btn.pack(side=tk.LEFT, pady=15)
+
+        # 儲存按鈕
+        save_btn = ttk.Button(
+            button_frame,
+            text="儲存",
+            style="Handover.TButton",
+            command=self._save_keywords
+        )
+        save_btn.pack(side=tk.RIGHT, padx=(10, 0), pady=15)
+
+        # 取消按鈕
+        cancel_btn = ttk.Button(
+            button_frame,
+            text="取消",
+            command=self.window.destroy
+        )
+        cancel_btn.pack(side=tk.RIGHT, pady=15)
+
+    def _load_keywords(self):
+        """載入 keywords.txt 內容"""
+        try:
+            # 優先使用當前目錄的 keywords.txt
+            keywords_file = os.path.join(os.getcwd(), "keywords.txt")
+            if not os.path.exists(keywords_file):
+                # 如果當前目錄沒有，嘗試使用資源路徑
+                keywords_file = get_resource_path("keywords.txt")
+            
+            if os.path.exists(keywords_file):
+                with open(keywords_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    self.text_editor.delete(1.0, tk.END)
+                    self.text_editor.insert(1.0, content)
+            else:
+                # 如果檔案不存在，顯示預設內容
+                default_content = """# 關鍵字顏色設定檔
+# 格式：關鍵字=顏色代碼
+# 每行一個設定，以 # 開頭的是註解
+
+# 範例：
+adb device=#FF0000
+12345=#0000FF
+SUCCESS=#00FF00
+ERROR=#FF0000"""
+                self.text_editor.delete(1.0, tk.END)
+                self.text_editor.insert(1.0, default_content)
+        except Exception as e:
+            messagebox.showerror("錯誤", f"載入關鍵字檔案失敗：{e}")
+
+    def _reload_keywords(self):
+        """重新載入關鍵字檔案"""
+        self._load_keywords()
+
+    def _save_keywords(self):
+        """儲存關鍵字設定"""
+        try:
+            content = self.text_editor.get(1.0, tk.END)
+            
+            # 使用當前目錄的 keywords.txt，而不是打包後的資源路徑
+            keywords_file = os.path.join(os.getcwd(), "keywords.txt")
+            
+            # 確保目錄存在
+            os.makedirs(os.path.dirname(keywords_file), exist_ok=True)
+            
+            with open(keywords_file, 'w', encoding='utf-8') as f:
+                f.write(content)
+            
+            # 重新載入關鍵字到 logger
+            if hasattr(self.parent, 'logger'):
+                self.parent.logger._load_keywords_from_file()
+            
+            messagebox.showinfo("成功", f"關鍵字設定已儲存到：\n{keywords_file}\n\n顏色設定已立即生效！")
+            
+        except Exception as e:
+            messagebox.showerror("錯誤", f"儲存關鍵字檔案失敗：{e}")
 
 
 if __name__ == "__main__":

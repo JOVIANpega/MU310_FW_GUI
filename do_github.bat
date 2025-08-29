@@ -42,12 +42,29 @@ findstr /c:"logs/" .gitignore >nul || echo logs/>>.gitignore
 findstr /c:"*.log" .gitignore >nul || echo *.log>>.gitignore
 findstr /c:"release/" .gitignore >nul || echo release/>>.gitignore
 findstr /c:"__pycache__/" .gitignore >nul || echo __pycache__/>>.gitignore
+findstr /c:"build/" .gitignore >nul || echo build/>>.gitignore
+findstr /c:"*.spec" .gitignore >nul || echo *.spec>>.gitignore
+findstr /c:"dist/" .gitignore >nul || echo dist/>>.gitignore
+findstr /c:"version_info.txt" .gitignore >nul || echo version_info.txt>>.gitignore
 rem Add more ignore rules as you need above
 git add .gitignore
 
 echo ===== Step 4: stage and commit changes =====
 git add -A
-git diff --cached --quiet && echo No changes to commit. || git commit -m "chore: sync workspace" || goto :fail
+
+rem 檢查是否有變更需要提交
+git diff --cached --quiet
+if errorlevel 1 (
+    rem 有變更，生成描述性提交訊息
+    echo Generating commit message...
+    set COMMIT_MSG=feat: update MU310 Tools Center v1.8.2
+    set COMMIT_MSG=!COMMIT_MSG! - Add keyword color editor, fix settings layout
+    set COMMIT_MSG=!COMMIT_MSG!, improve help.html, update build.bat
+    echo Commit message: !COMMIT_MSG!
+    git commit -m "!COMMIT_MSG!" || goto :fail
+) else (
+    echo No changes to commit.
+)
 
 echo ===== Step 5: push to origin/main =====
 echo Fetching remote updates...

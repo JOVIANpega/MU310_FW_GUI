@@ -53,6 +53,10 @@ set RAWVER=%RAWVER:"=%
 set VERSION=%RAWVER%
 echo   VERSION=%VERSION%
 
+:: 使用固定的版本號元組，避免解析錯誤
+set VERSION_TUPLE=1,8,2,0
+echo   VERSION_TUPLE=%VERSION_TUPLE%
+
 :: 用 PowerShell 更新 __build__ 內容
 powershell -NoProfile -Command "(Get-Content -Raw 'version.py') -replace '__build__\s*=\s*\".*\"', '__build__ = \"%BUILD%\"' | Set-Content 'version.py' -Encoding UTF8"
 
@@ -61,8 +65,8 @@ echo [步驟 2.2] 產生 version_info.txt...
 >version_info.txt echo # UTF-8 with BOM not required
 >>version_info.txt echo VSVersionInfo(
 >>version_info.txt echo   ffi=FixedFileInfo(
->>version_info.txt echo     filevers=(0,1,0,0),
->>version_info.txt echo     prodvers=(0,1,0,0),
+>>version_info.txt echo     filevers=(%VERSION_TUPLE%),
+>>version_info.txt echo     prodvers=(%VERSION_TUPLE%),
 >>version_info.txt echo     mask=0x3f,
 >>version_info.txt echo     flags=0x0,
 >>version_info.txt echo     OS=0x40004,
@@ -75,14 +79,15 @@ echo [步驟 2.2] 產生 version_info.txt...
 >>version_info.txt echo       StringTable(
 >>version_info.txt echo         '040904B0',
 >>version_info.txt echo         [
->>version_info.txt echo           StringStruct('CompanyName', 'MU310 Tools'),
->>version_info.txt echo           StringStruct('FileDescription', 'MU310 ADB Tool'),
+>>version_info.txt echo           StringStruct('CompanyName', 'MU310 Tools Center'),
+>>version_info.txt echo           StringStruct('FileDescription', 'MU310 ADB Tools Center - GUI for ADB tools, connection fix, firmware upgrade, and keyword color settings'),
 >>version_info.txt echo           StringStruct('FileVersion', '%VERSION%-%BUILD%'),
 >>version_info.txt echo           StringStruct('InternalName', 'MU310_ADB_TOOLl'),
->>version_info.txt echo           StringStruct('LegalCopyright', '© 2025'),
+>>version_info.txt echo           StringStruct('LegalCopyright', '© 2025 MU310 Tools Center'),
 >>version_info.txt echo           StringStruct('OriginalFilename', 'MU310_ADB_TOOLl.exe'),
->>version_info.txt echo           StringStruct('ProductName', 'MU310 ADB Tool'),
->>version_info.txt echo           StringStruct('ProductVersion', '%VERSION%-%BUILD%')
+>>version_info.txt echo           StringStruct('ProductName', 'MU310 ADB Tools Center'),
+>>version_info.txt echo           StringStruct('ProductVersion', '%VERSION%-%BUILD%'),
+>>version_info.txt echo           StringStruct('Comments', 'Build: %BUILD% - Includes ADB tools, connection fix, firmware upgrade, settings, and keyword color editor')
 >>version_info.txt echo         ]
 >>version_info.txt echo       )
 >>version_info.txt echo     ]),
@@ -119,6 +124,7 @@ pyinstaller --onefile ^
     --add-data "check ADB interface.bat;." ^
     --add-data "logs;logs" ^
     --add-data "version.py;." ^
+    --add-data "keywords.txt;." ^
     main.py
 
 :: 檢查打包結果
@@ -146,6 +152,7 @@ copy "Burn_in _611GT.bat" "release\" >nul
 copy "check ADB interface.bat" "release\" >nul
 copy "config.json" "release\" >nul
 copy "README.md" "release\" >nul
+copy "keywords.txt" "release\" >nul
 copy "assets\icon.ico" "release\" >nul
 echo   複製完成！
 echo.
@@ -171,6 +178,9 @@ echo - config.json (設定檔)
 echo - README.md (說明檔)
 echo - 圖示檔案 (.ico)
 echo - logs 資料夾 (日誌資料夾)
+echo - keywords.txt (關鍵字設定檔)
+echo - 所有 Python 模組 (.py)
+echo - assets 資料夾 (包含 help.html)
 echo.
 echo 注意事項:
 echo - 主程式已包含所有 Python 模組和資源檔
