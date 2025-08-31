@@ -25,9 +25,19 @@ class GuiLogger:
         self.tag_counter = 0  # 用於生成唯一的 tag 名稱
 
     def _setup_colors(self):
-        """設定文字顏色標籤（已改為從 keywords.txt 載入）"""
-        # 不再使用硬編碼顏色，所有顏色都從 keywords.txt 載入
-        pass
+        """設定文字顏色標籤"""
+        self.colors = {
+            "SUCCESS": "#008000",      # 綠色 - 成功訊息
+            "ERROR": "#FF0000",        # 紅色 - 錯誤訊息
+            "WARNING": "#FF8C00",      # 橙色 - 警告訊息
+            "INFO": "#0000FF",         # 藍色 - 一般資訊
+            "DEBUG": "#808080",        # 灰色 - 除錯訊息
+            "DEVICE": "#800080",       # 紫色 - 裝置相關
+            "PORT": "#008080",         # 青色 - 埠口相關
+            "ADB": "#FF4500",          # 橙紅色 - ADB 相關
+            "USB": "#4B0082",          # 靛色 - USB 相關
+            "FOTA": "#FF1493",         # 深粉紅色 - FOTA 相關
+        }
 
     def _load_keywords_from_file(self):
         """從 keywords.txt 檔案載入自訂關鍵字"""
@@ -164,9 +174,8 @@ class GuiLogger:
             # 插入換行
             text_widget.insert(tk.END, "\n")
             
-            # 設定等級標籤的顏色（從 keywords.txt 載入）
-            level_color = self.custom_keywords.get(level, "black")
-            text_widget.tag_config(level, foreground=level_color)
+            # 設定等級標籤的顏色
+            text_widget.tag_config(level, foreground=self.colors.get(level, "black"))
             
             # 滾動到底部
             text_widget.see(tk.END)
@@ -185,37 +194,69 @@ class GuiLogger:
             # 建立所有關鍵字的列表
             all_keywords = []
             
-            # 只處理自訂關鍵字（從 keywords.txt 載入）
+            # 1. 加入自訂關鍵字（優先處理）
             for keyword, color in self.custom_keywords.items():
                 if keyword:  # 確保關鍵字不為空
                     tag_name = self._get_unique_tag(f"custom_{keyword}")
-                    all_keywords.append((keyword, tag_name, color))
+                    all_keywords.append((keyword, tag_name, color, False))  # False 表示不使用 regex
             
-            # 按關鍵字長度排序（較長的優先）
-            all_keywords.sort(key=lambda x: len(x[0]), reverse=True)
+            # 2. 加入系統預設關鍵字（使用 regex）
+            default_keywords = {
+                r'\b(ADB|adb)\b': ('ADB', self.colors.get('ADB', '#FF4500')),
+                r'\b(USB|usb)\b': ('USB', self.colors.get('USB', '#4B0082')),
+                r'\b(COM\d+)\b': ('PORT', self.colors.get('PORT', '#008080')),
+                r'\b(DM\s+PORT|DM_PORT)\b': ('PORT', self.colors.get('PORT', '#008080')),
+                r'\b(FOTA|fota)\b': ('FOTA', self.colors.get('FOTA', '#FF1493')),
+                r'\b(device|Device|DEVICE)\b': ('DEVICE', self.colors.get('DEVICE', '#800080')),
+                r'\b(success|Success|SUCCESS)\b': ('SUCCESS', self.colors.get('SUCCESS', '#008000')),
+                r'\b(error|Error|ERROR)\b': ('ERROR', self.colors.get('ERROR', '#FF0000')),
+                r'\b(warning|Warning|WARNING)\b': ('WARNING', self.colors.get('WARNING', '#FF8C00')),
+                r'\b(failed|Failed|FAILED)\b': ('ERROR', self.colors.get('ERROR', '#FF0000')),
+                r'\b(connected|Connected|CONNECTED)\b': ('SUCCESS', self.colors.get('SUCCESS', '#008000')),
+                r'\b(disconnected|Disconnected|DISCONNECTED)\b': ('WARNING', self.colors.get('WARNING', '#FF8C00')),
+                r'\b(reboot|Reboot|REBOOT)\b': ('WARNING', self.colors.get('WARNING', '#FF8C00')),
+                r'\b(upgrade|Upgrade|UPGRADE)\b': ('FOTA', self.colors.get('FOTA', '#FF1493')),
+                r'\b(firmware|Firmware|FIRMWARE)\b': ('FOTA', self.colors.get('FOTA', '#FF1493')),
+            }
+            
+            for pattern, (tag_name, color) in default_keywords.items():
+                tag_name = self._get_unique_tag(tag_name)
+                all_keywords.append((pattern, tag_name, color, True))  # True 表示使用 regex
+            
+            # 按關鍵字長度排序（自訂關鍵字優先）
+            all_keywords.sort(key=lambda x: (not x[3], len(x[0])), reverse=True)  # 自訂關鍵字優先，然後按長度排序
             
             # 找出所有匹配位置
             replacements = []  # 儲存 (start_pos, end_pos, tag_name, color)
             
-            # 處理所有關鍵字（簡單字串匹配）
-            for keyword, tag_name, color in all_keywords:
-                start = 0
-                while True:
-                    pos = message.find(keyword, start)
-                    if pos == -1:
-                        break
-                    
-                    # 檢查是否與已匹配的關鍵字重疊
-                    overlaps = False
-                    for r_start, r_end, _, _ in replacements:
-                        if not (pos + len(keyword) <= r_start or pos >= r_end):  # 有重疊
-                            overlaps = True
+            # 處理自訂關鍵字（簡單字串匹配）
+            for keyword, tag_name, color, use_regex in all_keywords:
+                if not use_regex:
+                    # 簡單字串匹配
+                    start = 0
+                    while True:
+                        pos = message.find(keyword, start)
+                        if pos == -1:
                             break
-                    
-                    if not overlaps:
                         replacements.append((pos, pos + len(keyword), tag_name, color))
-                    
-                    start = pos + 1
+                        start = pos + 1
+                else:
+                    # Regex 匹配
+                    try:
+                        matches = list(re.finditer(keyword, message, re.IGNORECASE))
+                        for match in matches:
+                            start, end = match.span()
+                            # 檢查是否與已匹配的關鍵字重疊
+                            overlaps = False
+                            for r_start, r_end, _, _ in replacements:
+                                if not (end <= r_start or start >= r_end):  # 有重疊
+                                    overlaps = True
+                                    break
+                            if not overlaps:
+                                replacements.append((start, end, tag_name, color))
+                    except Exception as e:
+                        if self.debug_enabled:
+                            print(f"Regex 匹配失敗 '{keyword}': {e}")
             
             # 按位置排序
             replacements.sort(key=lambda x: x[0])

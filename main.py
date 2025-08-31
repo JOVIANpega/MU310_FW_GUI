@@ -940,6 +940,7 @@ class KeywordsEditor:
         
         self._build_ui()
         self._load_keywords()
+        self._setup_shortcuts()
 
     def _build_ui(self):
         # 標題
@@ -949,7 +950,33 @@ class KeywordsEditor:
         # 說明文字
         help_text = "格式：關鍵字=顏色代碼 (如: adb device=#FF0000)"
         help_label = ttk.Label(self.window, text=help_text, foreground="gray")
-        help_label.pack(pady=(0, 20))
+        help_label.pack(pady=(0, 5))
+        
+        # 快捷鍵說明
+        shortcuts_text = "快捷鍵：Ctrl+F搜尋 | Ctrl+S儲存 | F3下一個 | Shift+F3上一個 | Esc清除"
+        shortcuts_label = ttk.Label(self.window, text=shortcuts_text, foreground="darkgreen", font=("Segoe UI", 9))
+        shortcuts_label.pack(pady=(0, 10))
+
+        # 搜尋區域
+        search_frame = ttk.Frame(self.window)
+        search_frame.pack(fill=tk.X, padx=20, pady=(0, 10))
+        
+        ttk.Label(search_frame, text="搜尋關鍵字：").pack(side=tk.LEFT)
+        
+        self.search_var = tk.StringVar()
+        self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var, width=20)
+        self.search_entry.pack(side=tk.LEFT, padx=(5, 10))
+        self.search_entry.bind('<KeyRelease>', self._on_search_changed)
+        
+        self.search_btn = ttk.Button(search_frame, text="搜尋", command=self._search_keywords)
+        self.search_btn.pack(side=tk.LEFT, padx=(0, 10))
+        
+        self.clear_btn = ttk.Button(search_frame, text="清除", command=self._clear_search)
+        self.clear_btn.pack(side=tk.LEFT, padx=(0, 10))
+        
+        # 搜尋結果狀態
+        self.search_status = ttk.Label(search_frame, text="", foreground="blue")
+        self.search_status.pack(side=tk.LEFT, padx=(10, 0))
 
         # 文字編輯區域
         text_frame = ttk.Frame(self.window)
@@ -1030,6 +1057,138 @@ ERROR=#FF0000"""
     def _reload_keywords(self):
         """重新載入關鍵字檔案"""
         self._load_keywords()
+        self._clear_search()  # 清除搜尋結果
+
+    def _on_search_changed(self, event=None):
+        """搜尋框內容改變時的回調"""
+        # 延遲搜尋，避免每次按鍵都搜尋
+        if hasattr(self, '_search_after_id'):
+            self.window.after_cancel(self._search_after_id)
+        self._search_after_id = self.window.after(300, self._search_keywords)
+
+    def _search_keywords(self):
+        """搜尋關鍵字"""
+        search_text = self.search_var.get().strip()
+        if not search_text:
+            self._clear_search()
+            return
+        
+        # 清除之前的高亮
+        self.text_editor.tag_remove("search_highlight", "1.0", tk.END)
+        
+        # 搜尋並高亮
+        start_pos = "1.0"
+        matches = 0
+        
+        while True:
+            # 在文字中搜尋
+            pos = self.text_editor.search(search_text, start_pos, tk.END, nocase=True)
+            if not pos:
+                break
+            
+            # 計算結束位置
+            end_pos = f"{pos}+{len(search_text)}c"
+            
+            # 高亮搜尋結果
+            self.text_editor.tag_add("search_highlight", pos, end_pos)
+            matches += 1
+            
+            # 繼續搜尋下一個
+            start_pos = end_pos
+        
+        # 設定高亮樣式
+        self.text_editor.tag_config("search_highlight", background="yellow", foreground="black")
+        
+        # 更新狀態
+        if matches > 0:
+            self.search_status.config(text=f"找到 {matches} 個結果", foreground="blue")
+            # 滾動到第一個結果
+            first_match = self.text_editor.search(search_text, "1.0", tk.END, nocase=True)
+            if first_match:
+                self.text_editor.see(first_match)
+        else:
+            self.search_status.config(text="未找到結果", foreground="red")
+
+    def _clear_search(self):
+        """清除搜尋結果"""
+        self.search_var.set("")
+        self.text_editor.tag_remove("search_highlight", "1.0", tk.END)
+        self.search_status.config(text="")
+        
+        # 取消延遲搜尋
+        if hasattr(self, '_search_after_id'):
+            self.window.after_cancel(self._search_after_id)
+
+    def _setup_shortcuts(self):
+        """設定快捷鍵"""
+        # Ctrl+F 開啟搜尋
+        self.window.bind('<Control-f>', lambda e: self.search_entry.focus_set())
+        
+        # Ctrl+S 儲存
+        self.window.bind('<Control-s>', lambda e: self._save_keywords())
+        
+        # Escape 清除搜尋
+        self.window.bind('<Escape>', lambda e: self._clear_search())
+        
+        # F3 下一個搜尋結果
+        self.window.bind('<F3>', lambda e: self._find_next())
+        
+        # Shift+F3 上一個搜尋結果
+        self.window.bind('<Shift-F3>', lambda e: self._find_previous())
+
+    def _find_next(self):
+        """搜尋下一個結果"""
+        search_text = self.search_var.get().strip()
+        if not search_text:
+            return
+        
+        # 從當前游標位置搜尋
+        current_pos = self.text_editor.index(tk.INSERT)
+        pos = self.text_editor.search(search_text, current_pos, tk.END, nocase=True)
+        
+        if pos:
+            # 找到結果，移動游標並選中
+            end_pos = f"{pos}+{len(search_text)}c"
+            self.text_editor.mark_set(tk.INSERT, pos)
+            self.text_editor.tag_remove(tk.SEL, "1.0", tk.END)
+            self.text_editor.tag_add(tk.SEL, pos, end_pos)
+            self.text_editor.see(pos)
+        else:
+            # 沒找到，從頭開始搜尋
+            pos = self.text_editor.search(search_text, "1.0", tk.END, nocase=True)
+            if pos:
+                end_pos = f"{pos}+{len(search_text)}c"
+                self.text_editor.mark_set(tk.INSERT, pos)
+                self.text_editor.tag_remove(tk.SEL, "1.0", tk.END)
+                self.text_editor.tag_add(tk.SEL, pos, end_pos)
+                self.text_editor.see(pos)
+
+    def _find_previous(self):
+        """搜尋上一個結果"""
+        search_text = self.search_var.get().strip()
+        if not search_text:
+            return
+        
+        # 從當前游標位置向前搜尋
+        current_pos = self.text_editor.index(tk.INSERT)
+        pos = self.text_editor.search(search_text, current_pos, "1.0", backwards=True, nocase=True)
+        
+        if pos:
+            # 找到結果，移動游標並選中
+            end_pos = f"{pos}+{len(search_text)}c"
+            self.text_editor.mark_set(tk.INSERT, pos)
+            self.text_editor.tag_remove(tk.SEL, "1.0", tk.END)
+            self.text_editor.tag_add(tk.SEL, pos, end_pos)
+            self.text_editor.see(pos)
+        else:
+            # 沒找到，從尾部開始搜尋
+            pos = self.text_editor.search(search_text, tk.END, "1.0", backwards=True, nocase=True)
+            if pos:
+                end_pos = f"{pos}+{len(search_text)}c"
+                self.text_editor.mark_set(tk.INSERT, pos)
+                self.text_editor.tag_remove(tk.SEL, "1.0", tk.END)
+                self.text_editor.tag_add(tk.SEL, pos, end_pos)
+                self.text_editor.see(pos)
 
     def _save_keywords(self):
         """儲存關鍵字設定"""
