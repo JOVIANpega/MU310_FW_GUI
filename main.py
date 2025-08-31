@@ -926,8 +926,9 @@ class App(tk.Tk):
 class KeywordsEditor:
     def __init__(self, parent):
         self.parent = parent
+        self.i18n = parent.i18n  # 從父視窗取得 i18n 實例
         self.window = tk.Toplevel(parent)
-        self.window.title("關鍵字顏色設定")
+        self.window.title(self.i18n.t("keywords.window_title"))
         self.window.geometry("700x600")  # 增加視窗大小
         self.window.resizable(True, True)
         
@@ -944,34 +945,33 @@ class KeywordsEditor:
 
     def _build_ui(self):
         # 標題
-        title_label = ttk.Label(self.window, text="關鍵字顏色設定", font=("Segoe UI", 14, "bold"))
-        title_label.pack(pady=(20, 10))
+        self.title_label = ttk.Label(self.window, text=self.i18n.t("keywords.title"), font=("Segoe UI", 14, "bold"))
+        self.title_label.pack(pady=(20, 10))
 
         # 說明文字
-        help_text = "格式：關鍵字=顏色代碼 (如: adb device=#FF0000)"
-        help_label = ttk.Label(self.window, text=help_text, foreground="gray")
-        help_label.pack(pady=(0, 5))
+        self.help_label = ttk.Label(self.window, text=self.i18n.t("keywords.help_text"), foreground="gray")
+        self.help_label.pack(pady=(0, 5))
         
         # 快捷鍵說明
-        shortcuts_text = "快捷鍵：Ctrl+F搜尋 | Ctrl+S儲存 | F3下一個 | Shift+F3上一個 | Esc清除"
-        shortcuts_label = ttk.Label(self.window, text=shortcuts_text, foreground="darkgreen", font=("Segoe UI", 9))
-        shortcuts_label.pack(pady=(0, 10))
+        self.shortcuts_label = ttk.Label(self.window, text=self.i18n.t("keywords.shortcuts"), foreground="darkgreen", font=("Segoe UI", 9))
+        self.shortcuts_label.pack(pady=(0, 10))
 
         # 搜尋區域
         search_frame = ttk.Frame(self.window)
         search_frame.pack(fill=tk.X, padx=20, pady=(0, 10))
         
-        ttk.Label(search_frame, text="搜尋關鍵字：").pack(side=tk.LEFT)
+        self.search_label = ttk.Label(search_frame, text=self.i18n.t("keywords.search_label"))
+        self.search_label.pack(side=tk.LEFT)
         
         self.search_var = tk.StringVar()
         self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var, width=20)
         self.search_entry.pack(side=tk.LEFT, padx=(5, 10))
         self.search_entry.bind('<KeyRelease>', self._on_search_changed)
         
-        self.search_btn = ttk.Button(search_frame, text="搜尋", command=self._search_keywords)
+        self.search_btn = ttk.Button(search_frame, text=self.i18n.t("keywords.search_btn"), command=self._search_keywords)
         self.search_btn.pack(side=tk.LEFT, padx=(0, 10))
         
-        self.clear_btn = ttk.Button(search_frame, text="清除", command=self._clear_search)
+        self.clear_btn = ttk.Button(search_frame, text=self.i18n.t("keywords.clear_btn"), command=self._clear_search)
         self.clear_btn.pack(side=tk.LEFT, padx=(0, 10))
         
         # 搜尋結果狀態
@@ -1000,29 +1000,29 @@ class KeywordsEditor:
         button_frame.pack_propagate(False)  # 防止子元件影響父元件大小
 
         # 重新載入按鈕
-        reload_btn = ttk.Button(
+        self.reload_btn = ttk.Button(
             button_frame,
-            text="重新載入",
+            text=self.i18n.t("keywords.reload_btn"),
             command=self._reload_keywords
         )
-        reload_btn.pack(side=tk.LEFT, pady=15)
+        self.reload_btn.pack(side=tk.LEFT, pady=15)
 
         # 儲存按鈕
-        save_btn = ttk.Button(
+        self.save_btn = ttk.Button(
             button_frame,
-            text="儲存",
+            text=self.i18n.t("keywords.save_btn"),
             style="Handover.TButton",
             command=self._save_keywords
         )
-        save_btn.pack(side=tk.RIGHT, padx=(10, 0), pady=15)
+        self.save_btn.pack(side=tk.RIGHT, padx=(10, 0), pady=15)
 
         # 取消按鈕
-        cancel_btn = ttk.Button(
+        self.cancel_btn = ttk.Button(
             button_frame,
-            text="取消",
+            text=self.i18n.t("keywords.cancel_btn"),
             command=self.window.destroy
         )
-        cancel_btn.pack(side=tk.RIGHT, pady=15)
+        self.cancel_btn.pack(side=tk.RIGHT, pady=15)
 
     def _load_keywords(self):
         """載入 keywords.txt 內容"""
@@ -1052,7 +1052,10 @@ ERROR=#FF0000"""
                 self.text_editor.delete(1.0, tk.END)
                 self.text_editor.insert(1.0, default_content)
         except Exception as e:
-            messagebox.showerror("錯誤", f"載入關鍵字檔案失敗：{e}")
+            messagebox.showerror(
+                self.i18n.t("common.error"), 
+                self.i18n.t("keywords.load_error", error=str(e))
+            )
 
     def _reload_keywords(self):
         """重新載入關鍵字檔案"""
@@ -1208,10 +1211,16 @@ ERROR=#FF0000"""
             if hasattr(self.parent, 'logger'):
                 self.parent.logger._load_keywords_from_file()
             
-            messagebox.showinfo("成功", f"關鍵字設定已儲存到：\n{keywords_file}\n\n顏色設定已立即生效！")
+            messagebox.showinfo(
+                self.i18n.t("common.info"), 
+                self.i18n.t("keywords.save_success", path=keywords_file)
+            )
             
         except Exception as e:
-            messagebox.showerror("錯誤", f"儲存關鍵字檔案失敗：{e}")
+            messagebox.showerror(
+                self.i18n.t("common.error"), 
+                self.i18n.t("keywords.save_error", error=str(e))
+            )
 
 
 if __name__ == "__main__":

@@ -1,4 +1,3 @@
-
 """
 i18n.py - Internationalization support.
 Purpose: Provide a simple runtime-switchable translator for English and Traditional Chinese.
@@ -84,6 +83,21 @@ EN: Dict[str, str] = {
         "Notes: Enable Debug Mode for detailed logs. Logs auto-save in logs/ folder."
     ),
 
+    # Keywords Editor
+    "keywords.window_title": "Keywords Color Settings",
+    "keywords.title": "Keywords Color Settings",
+    "keywords.help_text": "Format: keyword=color_code (e.g., adb device=#FF0000)",
+    "keywords.shortcuts": "Shortcuts: Ctrl+F Search | Ctrl+S Save | F3 Next | Shift+F3 Previous | Esc Clear",
+    "keywords.search_label": "Search Keywords:",
+    "keywords.search_btn": "Search",
+    "keywords.clear_btn": "Clear",
+    "keywords.reload_btn": "Reload",
+    "keywords.save_btn": "Save",
+    "keywords.cancel_btn": "Cancel",
+    "keywords.save_success": "Keywords settings saved to:\n{path}\n\nColor settings are now active!",
+    "keywords.save_error": "Failed to save keywords file: {error}",
+    "keywords.load_error": "Failed to load keywords file: {error}",
+
     # Misc
     "common.info": "Info",
 }
@@ -166,6 +180,21 @@ ZH: Dict[str, str] = {
         "備註: 勾選除錯模式可顯示詳細日誌。日誌會自動存到 logs/ 資料夾。"
     ),
 
+    # Keywords Editor
+    "keywords.window_title": "關鍵字顏色設定",
+    "keywords.title": "關鍵字顏色設定",
+    "keywords.help_text": "格式：關鍵字=顏色代碼 (如: adb device=#FF0000)",
+    "keywords.shortcuts": "快捷鍵：Ctrl+F搜尋 | Ctrl+S儲存 | F3下一個 | Shift+F3上一個 | Esc清除",
+    "keywords.search_label": "搜尋關鍵字：",
+    "keywords.search_btn": "搜尋",
+    "keywords.clear_btn": "清除",
+    "keywords.reload_btn": "重新載入",
+    "keywords.save_btn": "儲存",
+    "keywords.cancel_btn": "取消",
+    "keywords.save_success": "關鍵字設定已儲存到：\n{path}\n\n顏色設定已立即生效！",
+    "keywords.save_error": "儲存關鍵字檔案失敗：{error}",
+    "keywords.load_error": "載入關鍵字檔案失敗：{error}",
+
     # Misc
     "common.info": "資訊",
 }
@@ -187,4 +216,4 @@ class I18N:
                 return text.format(**kwargs)
             except Exception:
                 return text
-        return text 
+        return text
