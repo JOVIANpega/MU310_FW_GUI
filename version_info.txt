@@ -17,13 +17,13 @@ VSVersionInfo(
         [
           StringStruct('CompanyName', 'MU310 Tools Center'),
           StringStruct('FileDescription', 'MU310 ADB Tools Center - GUI for ADB tools, connection fix, firmware upgrade, and keyword color settings'),
-          StringStruct('FileVersion', ' =-週日202508_31.5623'),
+          StringStruct('FileVersion', ' =-週三202509_03.14242'),
           StringStruct('InternalName', 'MU310_ADB_TOOLl'),
           StringStruct('LegalCopyright', '© 2025 MU310 Tools Center'),
           StringStruct('OriginalFilename', 'MU310_ADB_TOOLl.exe'),
           StringStruct('ProductName', 'MU310 ADB Tools Center'),
-          StringStruct('ProductVersion', ' =-週日202508_31.5623'),
-          StringStruct('Comments', 'Build: 週日202508_31.5623 - Includes ADB tools, connection fix, firmware upgrade, settings, and keyword color editor')
+          StringStruct('ProductVersion', ' =-週三202509_03.14242'),
+          StringStruct('Comments', 'Build: 週三202509_03.14242 - Includes ADB tools, connection fix, firmware upgrade, settings, and keyword color editor')
         ]
       )
     ]),

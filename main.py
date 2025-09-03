@@ -929,15 +929,21 @@ class KeywordsEditor:
         self.i18n = parent.i18n  # 從父視窗取得 i18n 實例
         self.window = tk.Toplevel(parent)
         self.window.title(self.i18n.t("keywords.window_title"))
-        self.window.geometry("700x600")  # 增加視窗大小
+        self.window.geometry("800x700")  # 增加視窗大小，確保按鈕不被擋住
         self.window.resizable(True, True)
         
         # 設定最小視窗大小，確保按鈕可見
-        self.window.minsize(600, 500)
+        self.window.minsize(700, 600)
         
         # 設定視窗置中
         self.window.transient(parent)
         self.window.grab_set()
+        
+        # 確保視窗不會被主視窗擋住
+        self.window.update_idletasks()
+        x = parent.winfo_x() + (parent.winfo_width() // 2) - (self.window.winfo_width() // 2)
+        y = parent.winfo_y() + (parent.winfo_height() // 2) - (self.window.winfo_height() // 2)
+        self.window.geometry(f"+{x}+{y}")
         
         self._build_ui()
         self._load_keywords()
@@ -958,13 +964,13 @@ class KeywordsEditor:
 
         # 搜尋區域
         search_frame = ttk.Frame(self.window)
-        search_frame.pack(fill=tk.X, padx=20, pady=(0, 10))
+        search_frame.pack(fill=tk.X, padx=20, pady=(0, 15))  # 增加底部間距
         
         self.search_label = ttk.Label(search_frame, text=self.i18n.t("keywords.search_label"))
         self.search_label.pack(side=tk.LEFT)
         
         self.search_var = tk.StringVar()
-        self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var, width=20)
+        self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var, width=25)  # 增加搜尋框寬度
         self.search_entry.pack(side=tk.LEFT, padx=(5, 10))
         self.search_entry.bind('<KeyRelease>', self._on_search_changed)
         
@@ -982,8 +988,8 @@ class KeywordsEditor:
         text_frame = ttk.Frame(self.window)
         text_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 20))
 
-        # 文字編輯器
-        self.text_editor = tk.Text(text_frame, wrap=tk.WORD, font=("Consolas", 10))
+        # 文字編輯器 - 增加最小高度確保可讀性
+        self.text_editor = tk.Text(text_frame, wrap=tk.WORD, font=("Consolas", 10), height=20)
         self.text_editor.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         # 捲軸
@@ -996,7 +1002,7 @@ class KeywordsEditor:
         button_frame.pack(fill=tk.X, padx=20, pady=(0, 20))
         
         # 確保按鈕區域有固定高度，防止被擠壓
-        button_frame.configure(height=60)
+        button_frame.configure(height=80)  # 增加按鈕區域高度
         button_frame.pack_propagate(False)  # 防止子元件影響父元件大小
 
         # 重新載入按鈕
@@ -1005,7 +1011,7 @@ class KeywordsEditor:
             text=self.i18n.t("keywords.reload_btn"),
             command=self._reload_keywords
         )
-        self.reload_btn.pack(side=tk.LEFT, pady=15)
+        self.reload_btn.pack(side=tk.LEFT, pady=20)  # 增加垂直間距
 
         # 儲存按鈕
         self.save_btn = ttk.Button(
@@ -1014,7 +1020,7 @@ class KeywordsEditor:
             style="Handover.TButton",
             command=self._save_keywords
         )
-        self.save_btn.pack(side=tk.RIGHT, padx=(10, 0), pady=15)
+        self.save_btn.pack(side=tk.RIGHT, padx=(10, 0), pady=20)  # 增加垂直間距
 
         # 取消按鈕
         self.cancel_btn = ttk.Button(
@@ -1022,7 +1028,7 @@ class KeywordsEditor:
             text=self.i18n.t("keywords.cancel_btn"),
             command=self.window.destroy
         )
-        self.cancel_btn.pack(side=tk.RIGHT, pady=15)
+        self.cancel_btn.pack(side=tk.RIGHT, pady=20)  # 增加垂直間距
 
     def _load_keywords(self):
         """載入 keywords.txt 內容"""
