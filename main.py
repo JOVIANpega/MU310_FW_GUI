@@ -82,9 +82,15 @@ class App(tk.Tk):
             self.tk_default_font = tkfont.nametofont("TkDefaultFont")
             self.tk_text_font = tkfont.nametofont("TkTextFont")
             self.tk_fixed_font = tkfont.nametofont("TkFixedFont")
+            try:
+                self.tk_default_font.configure(family="Calibri")
+                self.tk_text_font.configure(family="Calibri")
+                # 等寬字體維持既有設定
+            except Exception:
+                pass
         except tk.TclError:
-            self.tk_default_font = tkfont.Font(family="Segoe UI", size=size)
-            self.tk_text_font = tkfont.Font(family="Segoe UI", size=size)
+            self.tk_default_font = tkfont.Font(family="Calibri", size=size)
+            self.tk_text_font = tkfont.Font(family="Calibri", size=size)
             self.tk_fixed_font = tkfont.Font(family="Consolas", size=size)
         for f in (self.tk_default_font, self.tk_text_font, self.tk_fixed_font):
             try:
@@ -108,16 +114,8 @@ class App(tk.Tk):
             header_btn_act = "#D7E3F3" # hover
             header_btn_down = "#C5D6EE"# pressed
             header_fg = "#1F2937"      # 深灰文字
-            style.configure("Header.TFrame", background=header_bg)
-            style.configure("Header.TLabel", background=header_bg, foreground=header_fg)
-            style.configure("Header.TButton", background=header_btn, foreground=header_fg)
-            style.map(
-                "Header.TButton",
-                background=[("active", header_btn_act), ("pressed", header_btn_down)],
-                foreground=[("active", header_fg), ("pressed", header_fg)],
-            )
 
-            # Help 按鈕深綠色樣式
+            # Font +/- 按鈕使用同系深綠色樣式
             help_bg = "#1f6f3e"       # 深綠
             help_hover = "#2a8f53"    # hover 綠
             help_pressed = "#176133"  # pressed 綠
@@ -138,7 +136,7 @@ class App(tk.Tk):
             )
 
             # 分頁字體固定 12
-            self.tab_fixed_font = tkfont.Font(family="Segoe UI", size=12)
+            self.tab_fixed_font = tkfont.Font(family="Calibri", size=12)
             style.configure("Custom.TNotebook", background="#f0f0f0")
             style.configure(
                 "Custom.TNotebook.Tab",
@@ -162,7 +160,7 @@ class App(tk.Tk):
             )
 
             # 主標題樣式：大字＋淡黃色底
-            self.title_font = tkfont.Font(family="Segoe UI", size=16, weight="bold")
+            self.title_font = tkfont.Font(family="Calibri", size=16, weight="bold")
             style.configure("Title.TLabel", background="#FFF8DC", foreground="#000000")  # Cornsilk
         except Exception:
             pass
@@ -712,7 +710,7 @@ class App(tk.Tk):
         self.lbl_adb_status.config(text=f"{self.i18n.t('status.label', status=self.i18n.t('common.running'))}")
         self.lbl_adb_bat.config(text=f"{self.i18n.t('ui.current')} ADB Environment Check.bat")
         
-        bat = get_resource_path("ADB Environment Check.bat")
+        bat = get_resource_path("BAT_FILES/ADB Environment Check.bat")
         if os.path.exists(bat):
             run_bat_file(bat, logger=self.logger, cwd=os.path.dirname(bat), tab_name="adb")
             # 執行完成後更新狀態
@@ -730,7 +728,7 @@ class App(tk.Tk):
         self.lbl_fix_status.config(text=f"{self.i18n.t('status.label', status=self.i18n.t('common.running'))}")
         self.lbl_fix_bat.config(text=f"{self.i18n.t('ui.current')} auto_fix_adb_ENG.bat")
         
-        bat = get_resource_path("auto_fix_adb_ENG.bat")
+        bat = get_resource_path("BAT_FILES/auto_fix_adb_ENG.bat")
         if os.path.exists(bat):
             run_bat_file(bat, logger=self.logger, cwd=os.path.dirname(bat), tab_name="fix")
             # 執行完成後更新狀態
@@ -755,7 +753,7 @@ class App(tk.Tk):
             return
 
         fw_abs = os.path.abspath(fw)
-        bat = get_resource_path("Burn_in _611GT.bat")
+        bat = get_resource_path("BAT_FILES/Burn_in _611GT.bat")
         if not os.path.exists(bat):
             self.logger.error("Burn_in _611GT.bat not found", tab_name="upgrade")
             self.lbl_upgrade_status.config(text=f"{self.i18n.t('status.label', status=self.i18n.t('common.error'))}")

@@ -71,7 +71,7 @@ GUI_ADB_tools/
   utils_paths.py     # get_resource_path() 支援 PyInstaller 打包後路徑
   i18n.py            # 簡易 i18n：EN/ZH 字典、即時切換 API
   subprocess_runner.py # 外部命令執行工具：支援 DEBUG 模式、標籤頁獨立日誌
-  *.bat              # 既有批次腳本（ADB 檢查、燒錄流程、介面檢查等）
+  BAT_FILES/         # 批次檔案目錄（ADB 檢查、燒錄流程、介面檢查等）
   fix_usbcfg.py      # 既有 AT/USB 組態修正腳本（pyserial）
   assets/            # 圖示/資源（icon.ico 等）
   logs/              # 執行時自動產生日誌檔案

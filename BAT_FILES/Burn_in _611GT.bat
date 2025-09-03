@@ -1,4 +1,3 @@
-
 @echo off
 chcp 65001 >nul
 cd /d %~dp0
@@ -7,7 +6,7 @@ REM =========================================================
 REM Features:
 REM  1. Check if ADB tool is available
 REM  2. Verify DUT is connected via ADB
-REM  3. Confirm firmware file exists (from FW_IMAGE directory)
+REM  3. Confirm firmware file exists (from full path or FW_IMAGE directory)
 REM  4. Test if DUT target directory is writable
 REM  5. Push firmware file to DUT
 REM  6. Sync the file system
@@ -18,13 +17,6 @@ REM =========================================================
 
 setlocal enabledelayedexpansion
 
-set "FW_DIR=%~dp0FW_IMAGE"
-if not exist "%FW_DIR%" (
-    echo [ERROR] FW_IMAGE folder not found: "%FW_DIR%"
-    pause
-    exit /b 1
-)
-
 rem ==== FW selection (robust, no nested blocks) ====
 set "FW="
 set "FW_NAME=%~1"
@@ -32,12 +24,24 @@ set "FW_NAME=%~1"
 rem If argument given and is existing file (full path) -> use it
 if not "%~1"=="" if exist "%~f1" (
     set "FW=%~f1"
+    echo [INFO] Using provided firmware path: "%FW%"
     goto FW_OK
+)
+
+rem If no full path provided, try FW_IMAGE directory
+set "FW_DIR=%~dp0FW_IMAGE"
+if not exist "%FW_DIR%" (
+    echo [ERROR] No firmware path provided and FW_IMAGE folder not found: "%FW_DIR%"
+    echo [INFO] Please provide full path to firmware file as argument
+    echo [INFO] Example: "%~nx0" "D:\path\to\firmware.bin"
+    pause
+    exit /b 1
 )
 
 rem If argument given as plain name under FW_IMAGE -> use it
 if not "%FW_NAME%"=="" if exist "%FW_DIR%\%FW_NAME%" (
     set "FW=%FW_DIR%\%FW_NAME%"
+    echo [INFO] Using firmware from FW_IMAGE: "%FW%"
     goto FW_OK
 )
 
@@ -49,6 +53,7 @@ for %%F in ("%FW_DIR%\*.bin") do (
 )
 if "!COUNT!"=="0" (
     echo [ERROR] No .bin file found in "%FW_DIR%"
+    echo [INFO] Please provide full path to firmware file as argument
     pause
     exit /b 1
 )
@@ -83,7 +88,6 @@ if not exist "%FW%" (
 echo [INFO] Firmware selected: "%FW%"
 rem ==== FW selection end ====
 
-
 echo ===============================================
 echo    MU310 Firmware Flashing Tool v1.1
 echo ===============================================
@@ -107,6 +111,12 @@ set "DEVICE_FOUND="
 set /a RETRY=0
 :check_adb
 adb devices > adb_list.txt
+
+:: ===== Summary (Count + Serial list) =====
+for /f %%C in ('findstr /R /C:"device$" adb_list.txt ^| find /v /c ""') do set COUNT=%%C
+echo === ADB devices: %COUNT% ===
+for /f "tokens=1" %%S in ('findstr /R /C:"device$" adb_list.txt') do echo - %%S
+
 for /f "skip=1 tokens=*" %%A in (adb_list.txt) do (
     if not "%%A"=="" (
         set "DEVICE_FOUND=1"

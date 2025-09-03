@@ -118,13 +118,11 @@ pyinstaller --onefile ^
     --add-data "utils_paths.py;." ^
     --add-data "fix_usbcfg.py;." ^
     --add-data "README.md;." ^
-    --add-data "auto_fix_adb_ENG.bat;." ^
-    --add-data "ADB Environment Check.bat;." ^
-    --add-data "Burn_in _611GT.bat;." ^
-    --add-data "check ADB interface.bat;." ^
+    --add-data "BAT_FILES;BAT_FILES" ^
     --add-data "logs;logs" ^
     --add-data "version.py;." ^
     --add-data "keywords.txt;." ^
+    --add-data "FW_IMAGE;FW_IMAGE" ^
     main.py
 
 :: 檢查打包結果
@@ -143,13 +141,13 @@ if %errorlevel% equ 0 (
     exit /b 1
 )
 
-:: 4. 複製額外的批次檔到 release 資料夾（方便使用者存取）
+:: 4. 複製額外的批次檔到 release 資料夾（保持目錄結構）
 echo.
 echo [步驟 4] 複製額外檔案到 release 資料夾...
-copy "auto_fix_adb_ENG.bat" "release\" >nul
-copy "ADB Environment Check.bat" "release\" >nul
-copy "Burn_in _611GT.bat" "release\" >nul
-copy "check ADB interface.bat" "release\" >nul
+if not exist "release\BAT_FILES" mkdir "release\BAT_FILES"
+copy "BAT_FILES\*.*" "release\BAT_FILES\" >nul
+if not exist "release\FW_IMAGE" mkdir "release\FW_IMAGE"
+xcopy /E /I /Y "FW_IMAGE\*" "release\FW_IMAGE\" >nul
 copy "config.json" "release\" >nul
 copy "README.md" "release\" >nul
 copy "keywords.txt" "release\" >nul
@@ -173,7 +171,7 @@ echo 輸出檔案位置: release\MU310_ADB_TOOLl.exe
 echo.
 echo 包含的檔案:
 echo - MU310_ADB_TOOLl.exe (主程式)
-echo - 所有批次檔 (.bat)
+echo - BAT_FILES/ 目錄 (所有批次檔)
 echo - config.json (設定檔)
 echo - README.md (說明檔)
 echo - 圖示檔案 (.ico)
@@ -181,6 +179,7 @@ echo - logs 資料夾 (日誌資料夾)
 echo - keywords.txt (關鍵字設定檔)
 echo - 所有 Python 模組 (.py)
 echo - assets 資料夾 (包含 help.html)
+echo - FW_IMAGE 目錄 (韌體檔案)
 echo.
 echo 注意事項:
 echo - 主程式已包含所有 Python 模組和資源檔
