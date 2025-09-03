@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+# Block commits that include files larger than 100MB (GitHub hard limit)
+# Works on staged files only
+
+# size limit in bytes (100MB)
+LIMIT=$((100 * 1024 * 1024))
+
+# get list of staged files (added, copied, modified)
+staged_files=$(git diff --cached --name-only --diff-filter=ACM)
+
+# if no files, exit
+[ -z "$staged_files" ] && exit 0
+
+blocked=0
+
+for f in $staged_files; do
+  # skip if file no longer exists in working tree (e.g., deleted, or generated on commit)
+  [ ! -f "$f" ] && continue
+
+  size=$(wc -c < "$f" 2>/dev/null)
+  # if wc failed, continue
+  [ -z "$size" ] && continue
+
+  if [ "$size" -gt "$LIMIT" ]; then
+    echo "[pre-commit] Blocked: $f is $(printf '%.2f' $(echo "$size 1048576" | awk '{print $1/$2}')) MB (> 100MB)" 1>&2
+    blocked=1
+  fi
+done
+
+if [ "$blocked" -ne 0 ]; then
+  echo "\nCommit aborted. Please remove large files (>100MB) from the commit or use Git LFS." 1>&2
+  exit 1
+fi
+
+exit 0 
