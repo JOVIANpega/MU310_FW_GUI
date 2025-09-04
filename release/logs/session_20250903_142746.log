@@ -1,0 +1,6 @@
+[14:28:02] INFO: 韌體檔案: D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[14:28:03] INFO: 執行韌體升級 : D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[14:28:03] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI228882\BAT_FILES/Burn_in _611GT.bat" "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[14:28:03] INFO: [ERROR] FW_IMAGE folder not found: "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI228882\BAT_FILES\FW_IMAGE"
+[14:28:03] INFO: Press any key to continue . . .
+[14:28:03] INFO: [EXIT] code=1

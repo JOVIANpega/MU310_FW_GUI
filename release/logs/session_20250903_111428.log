@@ -1,0 +1,154 @@
+[11:14:57] INFO: 韌體檔案: D:/MU310_FW/GUI_ADB_tools/FW_IMAGE/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[11:14:59] INFO: 執行韌體升級 : D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[11:14:59] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562\Burn_in _611GT.bat" "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[11:14:59] INFO: [INFO] Firmware selected: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[11:14:59] INFO: ===============================================
+[11:14:59] INFO:    MU310 Firmware Flashing Tool v1.1
+[11:14:59] INFO: ===============================================
+[11:14:59] INFO: === Step 0: Check ADB version ===
+[11:14:59] INFO: Android Debug Bridge version 1.0.41
+[11:14:59] INFO: Version 35.0.0-11411520
+[11:14:59] INFO: Installed as C:\platform-tools\adb.exe
+[11:14:59] INFO: Running on Windows 10.0.26100
+[11:15:04] INFO: 
+[11:15:04] INFO: === Step 1: Check ADB connection ===
+[11:15:04] INFO: Found device: 109c377c	device
+[11:15:04] INFO: [SUCCESS] ADB device connection normal
+[11:15:04] INFO: 
+[11:15:04] INFO: === Step 2: Check firmware file ===
+[11:15:04] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[11:15:04] INFO: 
+[11:15:04] INFO: === Step 3: Test write permission ===
+[11:15:04] INFO: [SUCCESS] Target directory writable
+[11:15:04] INFO: 
+[11:15:04] INFO: === Step 4: Upload firmware ===
+[11:15:04] INFO: [4.1] Uploading firmware to device...
+[11:15:33] INFO: D:\MU310_FW\GUI_ADB_tools\FW_IMAGE\MU310-Q611GT_V1.1.0.0_1_modem.bin: 1 file pushed, 0 skipped. 4.0 MB/s (123185277 bytes in 29.150s)
+[11:15:34] INFO: [SUCCESS] Firmware upload completed
+[11:15:34] INFO: 
+[11:15:34] INFO: [4.2] Executing sync operation...
+[11:15:38] INFO: [SUCCESS] Sync operation completed
+[11:15:38] INFO: 
+[11:15:38] INFO: [4.3] Stopping related system services...
+[11:15:39] INFO: [SUCCESS] System services stopped
+[11:15:39] INFO: 
+[11:15:39] INFO: [4.4] Checking /dev/smd7...
+[11:15:39] INFO: [SUCCESS] /dev/smd7 status check completed
+[11:15:39] INFO: 
+[11:15:39] INFO: [4.5] Sending firmware update command...
+[11:15:39] INFO: [SUCCESS] Firmware flashing command sent
+[11:15:39] INFO: [EXIT] code=0
+[11:15:39] INFO: 
+[11:15:39] INFO: ===============================================
+[11:15:39] INFO: Notes:
+[11:15:39] INFO: 1. Please wait for device to complete firmware update
+[11:15:39] INFO: 2. Do not disconnect during update process
+[11:15:39] INFO: 3. Device may restart automatically
+[11:15:39] INFO: 4. The entire process may take several minutes
+[11:15:39] INFO: ===============================================
+[11:15:39] INFO: 
+[11:15:39] INFO: MU310 burn in PASS and please wait 4 mins for update.
+[11:15:39] INFO: Press any key to continue . . .
+[11:15:40] ERROR: * daemon not running; starting now at tcp:5037
+[11:15:40] ERROR: * daemon started successfully
+[11:15:40] ERROR: ERROR: Input redirection is not supported, exiting the process immediately.
+[11:18:45] INFO: 執行自動修復...
+[11:18:45] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562\auto_fix_adb_ENG.bat"
+[11:18:45] INFO: 
+[11:18:45] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>chcp 65001  1>nul
+[11:18:45] INFO: [STEP 1] Checking ADB device connection...
+[11:18:45] INFO: ⚠️ No ADB device detected. Attempting to fix...
+[11:18:45] INFO: [STEP 2] Sending AT command to set USB mode...
+[11:19:03] INFO: 執行自動修復...
+[11:19:03] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562\auto_fix_adb_ENG.bat"
+[11:19:03] INFO: 
+[11:19:03] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>chcp 65001  1>nul
+[11:19:03] INFO: [STEP 1] Checking ADB device connection...
+[11:19:03] INFO: ⚠️ No ADB device detected. Attempting to fix...
+[11:19:03] INFO: [STEP 2] Sending AT command to set USB mode...
+[11:19:11] INFO: Scan COM ports...
+[11:19:11] INFO: Found 5 COM ports:
+[11:19:11] INFO:   COM9 - Quectel USB AT Port (COM9)
+[11:19:11] INFO:   COM8 - Quectel USB NMEA Port (COM8)
+[11:19:11] INFO:   COM7 - Quectel USB DM Port (COM7)
+[11:19:11] INFO:   COM3 - Prolific PL2303GC USB Serial COM Port (COM3)
+[11:19:11] INFO:   COM10 - Quectel USB Modem
+[11:19:23] INFO: 檢查 ADB 環境...
+[11:19:23] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562\ADB Environment Check.bat"
+[11:19:23] INFO: 
+[11:19:23] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>echo === Step 0: Check ADB Environment ===
+[11:19:23] INFO: === Step 0: Check ADB Environment ===
+[11:19:23] INFO: 
+[11:19:23] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>where adb  1>nul 2>nul
+[11:19:23] INFO: 
+[11:19:23] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>if 0 NEQ 0 (
+[11:19:23] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[11:19:23] INFO:  pause
+[11:19:23] INFO:  exit /b 1
+[11:19:23] INFO: )
+[11:19:23] INFO: 
+[11:19:23] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>where adb   | findstr /i "System32"  1>nul
+[11:19:23] INFO: 
+[11:19:23] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>if 1 == 0 (
+[11:19:23] INFO: echo [ERROR] Detected ADB in System32 folder!
+[11:19:23] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[11:19:23] INFO:  pause
+[11:19:24] INFO:  exit /b 1
+[11:19:24] INFO: )
+[11:19:24] INFO: 
+[11:19:24] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>echo Current adb path:
+[11:19:24] INFO: Current adb path:
+[11:19:24] INFO: 
+[11:19:24] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>where adb
+[11:19:24] INFO: C:\platform-tools\adb.exe
+[11:19:24] INFO: 
+[11:19:24] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>echo.
+[11:19:24] INFO: 
+[11:19:24] INFO: 
+[11:19:24] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>adb version
+[11:19:24] INFO: Android Debug Bridge version 1.0.41
+[11:19:24] INFO: Version 35.0.0-11411520
+[11:19:24] INFO: Installed as C:\platform-tools\adb.exe
+[11:19:24] INFO: Running on Windows 10.0.26100
+[11:19:24] INFO: 
+[11:19:24] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>if 0 NEQ 0 (
+[11:19:24] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[11:19:24] INFO:  pause
+[11:19:24] INFO:  exit /b 1
+[11:19:24] INFO: )
+[11:19:24] INFO: 
+[11:19:24] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>adb kill-server
+[11:19:24] INFO: 
+[11:19:24] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>adb start-server
+[11:19:26] INFO: 
+[11:19:26] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>if 0 NEQ 0 (
+[11:19:26] INFO: [EXIT] code=0
+[11:19:26] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[11:19:26] INFO:  pause
+[11:19:26] INFO:  exit /b 1
+[11:19:26] INFO: )
+[11:19:26] INFO: 
+[11:19:26] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>adb devices
+[11:19:26] INFO: List of devices attached
+[11:19:26] INFO: 
+[11:19:26] INFO: 
+[11:19:26] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI256562>echo.
+[11:19:26] INFO: 
+[11:19:26] ERROR: * daemon not running; starting now at tcp:5037
+[11:19:26] ERROR: * daemon started successfully
+[11:19:35] ERROR: 找不到使用說明檔 (assets/help.html)
+[11:19:36] INFO: [~] 䤣i^ AT PORTC
+[11:19:36] INFO: ✅ AT command sent successfully. Waiting 90 seconds for reboot...
+[11:19:36] INFO: [STEP 3] Rechecking ADB device connection...
+[11:19:36] INFO: [~] 䤣i^ AT PORTC
+[11:19:36] INFO: ❌ ADB still not connected after fix. Please check the device manually.
+[11:19:36] INFO: [EXIT] code=0
+[11:19:36] INFO: ✅ AT command sent successfully. Waiting 90 seconds for reboot...
+[11:19:36] INFO: [STEP 3] Rechecking ADB device connection...
+[11:19:36] INFO: Press any key to continue . . .
+[11:19:36] ERROR: ERROR: Input redirection is not supported, exiting the process immediately.
+[11:19:36] INFO: ❌ ADB still not connected after fix. Please check the device manually.
+[11:19:36] INFO: [EXIT] code=0
+[11:19:36] INFO: Press any key to continue . . .
+[11:19:36] ERROR: ERROR: Input redirection is not supported, exiting the process immediately.
+[11:19:37] ERROR: 找不到使用說明檔 (assets/help.html)

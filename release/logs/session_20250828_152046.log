@@ -1,0 +1,92 @@
+[15:20:50] INFO: 開始執行 ADB 環境檢查...
+[15:20:50] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562\ADB Environment Check.bat"
+[15:20:50] INFO: 
+[15:20:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>echo === Step 0: Check ADB Environment ===
+[15:20:50] INFO: === Step 0: Check ADB Environment ===
+[15:20:50] INFO: 
+[15:20:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>where adb  1>nul 2>nul
+[15:20:50] INFO: 
+[15:20:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>if 0 NEQ 0 (
+[15:20:50] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[15:20:50] INFO:  pause
+[15:20:50] INFO:  exit /b 1
+[15:20:50] INFO: )
+[15:20:50] INFO: 
+[15:20:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>where adb   | findstr /i "System32"  1>nul
+[15:20:50] INFO: 
+[15:20:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>if 1 == 0 (
+[15:20:50] INFO: echo [ERROR] Detected ADB in System32 folder!
+[15:20:50] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[15:20:50] INFO:  pause
+[15:20:50] INFO:  exit /b 1
+[15:20:50] INFO: )
+[15:20:50] INFO: 
+[15:20:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>echo Current adb path:
+[15:20:50] INFO: Current adb path:
+[15:20:51] INFO: 
+[15:20:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>where adb
+[15:20:51] INFO: C:\platform-tools\adb.exe
+[15:20:51] INFO: 
+[15:20:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>echo.
+[15:20:51] INFO: 
+[15:20:51] INFO: 
+[15:20:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>adb version
+[15:20:51] INFO: Android Debug Bridge version 1.0.41
+[15:20:51] INFO: Version 35.0.0-11411520
+[15:20:51] INFO: Installed as C:\platform-tools\adb.exe
+[15:20:51] INFO: Running on Windows 10.0.26100
+[15:20:51] INFO: 
+[15:20:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>if 0 NEQ 0 (
+[15:20:51] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[15:20:51] INFO:  pause
+[15:20:51] INFO:  exit /b 1
+[15:20:51] INFO: )
+[15:20:51] INFO: 
+[15:20:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>adb kill-server
+[15:20:51] INFO: 
+[15:20:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>adb start-server
+[15:20:56] INFO: 
+[15:20:56] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>if 0 NEQ 0 (
+[15:20:56] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[15:20:56] INFO:  pause
+[15:20:56] INFO: [EXIT] code=0
+[15:20:56] INFO:  exit /b 1
+[15:20:56] INFO: )
+[15:20:56] INFO: 
+[15:20:56] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>adb devices
+[15:20:56] INFO: List of devices attached
+[15:20:56] INFO: 109c377c	device
+[15:20:56] INFO: 
+[15:20:56] INFO: 
+[15:20:56] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>echo.
+[15:20:56] INFO: 
+[15:20:56] ERROR: * daemon not running; starting now at tcp:5037
+[15:20:56] ERROR: * daemon started successfully
+[15:20:59] INFO: 開始執行自動修復...
+[15:20:59] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562\auto_fix_adb_ENG.bat"
+[15:20:59] INFO: 
+[15:20:59] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562>chcp 65001  1>nul
+[15:20:59] INFO: [STEP 1] Checking ADB device connection...
+[15:20:59] INFO: ✅ ADB is connected, no fix needed.
+[15:20:59] INFO: [EXIT] code=0
+[15:20:59] INFO: Press any key to continue . . .
+[15:22:10] INFO: 開始檢查 DM 埠...
+[15:22:10] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI169562\checkDMport_ENG.bat"
+[15:22:10] INFO: ===============================================
+[15:22:10] INFO:    MU310 Firmware Flashing Tool v1.0
+[15:22:10] INFO: ===============================================
+[15:22:10] INFO: === Step 1: Check ADB Connection ===
+[15:22:10] INFO: Running adb devices...
+[15:22:10] INFO: Device found: 109c377c	device
+[15:22:10] INFO: [OK] ADB device connected.
+[15:22:10] INFO: 
+[15:22:10] INFO: === Step 2: Check DM PORT ===
+[15:22:11] INFO: Found DM PORT: Quectel USB DM Port (COM7)
+[15:22:11] INFO: [EXIT] code=1
+[15:22:11] INFO: [OK] DM PORT found = COM7
+[15:22:11] INFO: 
+[15:22:11] INFO: === Step 3: Check Firmware File ===
+[15:22:11] INFO: [ERROR] Firmware file not found: MU310-Q612_V0.0.0.0_1_modem.bin
+[15:22:11] INFO: Please ensure the firmware file exists in the correct path.
+[15:22:11] INFO: Press any key to continue . . .
+[15:22:11] ERROR: Parameter format not correct - ::

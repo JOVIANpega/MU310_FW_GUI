@@ -1,0 +1,26 @@
+[14:30:04] INFO: 韌體檔案: D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[14:30:05] INFO: 執行韌體升級 : D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[14:30:05] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI341082\BAT_FILES/Burn_in _611GT.bat" "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[14:30:05] INFO: [INFO] Using provided firmware path: ""
+[14:30:05] INFO: [INFO] Firmware selected: "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[14:30:05] INFO: ===============================================
+[14:30:05] INFO:    MU310 Firmware Flashing Tool v1.1
+[14:30:05] INFO: ===============================================
+[14:30:05] INFO: === Step 0: Check ADB version ===
+[14:30:05] INFO: Android Debug Bridge version 1.0.41
+[14:30:05] INFO: Version 35.0.0-11411520
+[14:30:05] INFO: Installed as C:\platform-tools\adb.exe
+[14:30:05] INFO: Running on Windows 10.0.26100
+[14:30:10] INFO: 
+[14:30:10] INFO: === Step 1: Check ADB connection ===
+[14:30:10] INFO: Found device: 109c377c	device
+[14:30:10] INFO: [SUCCESS] ADB device connection normal
+[14:30:10] INFO: 
+[14:30:10] INFO: === Step 2: Check firmware file ===
+[14:30:10] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[14:30:10] INFO: 
+[14:30:10] INFO: === Step 3: Test write permission ===
+[14:30:11] INFO: [SUCCESS] Target directory writable
+[14:30:11] INFO: 
+[14:30:11] INFO: === Step 4: Upload firmware ===
+[14:30:11] INFO: [4.1] Uploading firmware to device...

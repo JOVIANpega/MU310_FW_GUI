@@ -1,0 +1,126 @@
+[14:42:37] INFO: Scan COM ports...
+[14:42:38] INFO: Found 4 COM ports:
+[14:42:38] INFO:   COM9- Quectel USB AT Port (COM9  [VID:PID 2C7C:0801]
+[14:42:38] INFO:   COM8- Quectel USB NMEA Port (COM8  [VID:PID 2C7C:0801]
+[14:42:38] INFO:   COM7- Quectel USB DM Port (COM7  [VID:PID 2C7C:0801]
+[14:42:38] INFO:   COM3- Prolific PL2303GC USB Serial COM Port (COM3  [VID:PID 067B:23A3]
+[14:42:39] INFO: 檢查 ADB 環境...
+[14:42:39] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES/ADB Environment Check.bat"
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>echo === Step 0: Check ADB Environment ===
+[14:42:40] INFO: === Step 0: Check ADB Environment ===
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>where adb  1>nul 2>nul
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>if 0 NEQ 0 (
+[14:42:40] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[14:42:40] INFO:  pause
+[14:42:40] INFO:  exit /b 1
+[14:42:40] INFO: )
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>where adb   | findstr /i "System32"  1>nul
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>if 1 == 0 (
+[14:42:40] INFO: echo [ERROR] Detected ADB in System32 folder!
+[14:42:40] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[14:42:40] INFO:  pause
+[14:42:40] INFO:  exit /b 1
+[14:42:40] INFO: )
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>echo Current adb path:
+[14:42:40] INFO: Current adb path:
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>where adb
+[14:42:40] INFO: C:\platform-tools\adb.exe
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>echo.
+[14:42:40] INFO: 
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>adb version
+[14:42:40] INFO: Android Debug Bridge version 1.0.41
+[14:42:40] INFO: Version 35.0.0-11411520
+[14:42:40] INFO: Installed as C:\platform-tools\adb.exe
+[14:42:40] INFO: Running on Windows 10.0.26100
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>if 0 NEQ 0 (
+[14:42:40] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[14:42:40] INFO:  pause
+[14:42:40] INFO:  exit /b 1
+[14:42:40] INFO: )
+[14:42:40] INFO: 
+[14:42:40] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>adb kill-server
+[14:42:41] INFO: 
+[14:42:41] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>adb start-server
+[14:42:45] INFO: 
+[14:42:45] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>if 0 NEQ 0 (
+[14:42:45] INFO: [EXIT] code=0
+[14:42:45] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[14:42:45] INFO:  pause
+[14:42:45] INFO:  exit /b 1
+[14:42:45] INFO: )
+[14:42:45] INFO: 
+[14:42:45] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>adb devices
+[14:42:45] INFO: List of devices attached
+[14:42:45] INFO: 109c377c	device
+[14:42:45] INFO: 
+[14:42:45] INFO: 
+[14:42:45] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES>echo.
+[14:42:45] INFO: 
+[14:42:45] ERROR: * daemon not running; starting now at tcp:5037
+[14:42:45] ERROR: * daemon started successfully
+[14:43:02] INFO: 韌體檔案: D:/MU310_FW/MU310-Q611GT_V1.1.0.0_1_modem.bin
+[14:43:04] INFO: 執行韌體升級 : D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin
+[14:43:04] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\BAT_FILES/Burn_in _611GT.bat" "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[14:43:05] INFO: [INFO] Using provided firmware path: ""
+[14:43:05] INFO: [INFO] Firmware selected: "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[14:43:05] INFO: ===============================================
+[14:43:05] INFO:    MU310 Firmware Flashing Tool v1.1
+[14:43:05] INFO: ===============================================
+[14:43:05] INFO: === Step 0: Check ADB version ===
+[14:43:05] INFO: Android Debug Bridge version 1.0.41
+[14:43:05] INFO: Version 35.0.0-11411520
+[14:43:05] INFO: Installed as C:\platform-tools\adb.exe
+[14:43:05] INFO: Running on Windows 10.0.26100
+[14:43:10] INFO: 
+[14:43:10] INFO: === Step 1: Check ADB connection ===
+[14:43:10] INFO: Found device: 109c377c	device
+[14:43:10] INFO: [SUCCESS] ADB device connection normal
+[14:43:10] INFO: 
+[14:43:10] INFO: === Step 2: Check firmware file ===
+[14:43:10] INFO: [SUCCESS] Firmware file exists: "D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin"
+[14:43:10] INFO: 
+[14:43:10] INFO: === Step 3: Test write permission ===
+[14:43:10] INFO: [SUCCESS] Target directory writable
+[14:43:10] INFO: 
+[14:43:10] INFO: === Step 4: Upload firmware ===
+[14:43:10] INFO: [4.1] Uploading firmware to device...
+[14:43:40] INFO: D:\MU310_FW\MU310-Q611GT_V1.1.0.0_1_modem.bin: 1 file pushed, 0 skipped. 3.9 MB/s (123185277 bytes in 29.847s)
+[14:43:40] INFO: [SUCCESS] Firmware upload completed
+[14:43:40] INFO: 
+[14:43:40] INFO: [4.2] Executing sync operation...
+[14:43:43] INFO: [SUCCESS] Sync operation completed
+[14:43:43] INFO: 
+[14:43:43] INFO: [4.3] Stopping related system services...
+[14:43:43] INFO: [SUCCESS] System services stopped
+[14:43:43] INFO: 
+[14:43:43] INFO: [4.4] Checking /dev/smd7...
+[14:43:43] INFO: [SUCCESS] /dev/smd7 status check completed
+[14:43:44] INFO: 
+[14:43:44] INFO: [4.5] Sending firmware update command...
+[14:43:44] INFO: [SUCCESS] Firmware flashing command sent
+[14:43:44] INFO: [EXIT] code=0
+[14:43:44] INFO: 
+[14:43:44] INFO: ===============================================
+[14:43:44] INFO: Notes:
+[14:43:44] INFO: 1. Please wait for device to complete firmware update
+[14:43:44] INFO: 2. Do not disconnect during update process
+[14:43:44] INFO: 3. Device may restart automatically
+[14:43:44] INFO: 4. The entire process may take several minutes
+[14:43:44] INFO: ===============================================
+[14:43:44] INFO: 
+[14:43:44] INFO: MU310 burn in PASS and please wait 4 mins for update.
+[14:43:44] INFO: Press any key to continue . . .
+[14:43:44] ERROR: * daemon not running; starting now at tcp:5037
+[14:43:44] ERROR: * daemon started successfully
+[14:43:44] ERROR: ERROR: Input redirection is not supported, exiting the process immediately.
+[14:44:06] INFO: Open help: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI333602\assets\help.html

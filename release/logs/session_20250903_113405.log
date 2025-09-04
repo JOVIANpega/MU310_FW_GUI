@@ -1,0 +1,4 @@
+[11:34:09] INFO: Scan COM ports...
+[11:34:09] INFO: Found 2 COM ports:
+[11:34:09] INFO:   COM4- Quectel QDLoader 9008 (COM4  [VID:PID 05C6:9008]
+[11:34:09] INFO:   COM3- Prolific PL2303GC USB Serial COM Port (COM3  [VID:PID 067B:23A3]

@@ -1,0 +1,39 @@
+[18:30:05] INFO: 檢查 ADB 環境...
+[18:30:05] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\BAT_FILES/ADB Environment Check.bat"
+[18:30:05] INFO: === Step 0: Check ADB Environment ===
+[18:30:05] INFO: Current adb path:
+[18:30:05] INFO: C:\platform-tools\adb.exe
+[18:30:05] INFO: 
+[18:30:05] INFO: Android Debug Bridge version 1.0.41
+[18:30:05] INFO: Version 35.0.0-11411520
+[18:30:05] INFO: Installed as C:\platform-tools\adb.exe
+[18:30:05] INFO: Running on Windows 10.0.26100
+[18:30:07] INFO: 
+[18:30:07] INFO: List of devices attached
+[18:30:07] INFO: 
+[18:30:07] INFO: 
+[18:30:07] INFO: === ADB devices: 0 ===
+[18:30:07] INFO: 
+[18:30:07] INFO: [EXIT] code=0
+[18:30:07] INFO: === Summary ===
+[18:30:07] INFO: ADB Path: C:\platform-tools\adb.exe
+[18:30:07] INFO: Device Count: 0
+[18:30:07] INFO: ================
+[18:30:07] ERROR: * daemon not running; starting now at tcp:5037
+[18:30:07] ERROR: * daemon started successfully
+[18:30:15] INFO: 執行自動修復...
+[18:30:15] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\BAT_FILES/auto_fix_adb_ENG.bat"
+[18:30:16] INFO: [STEP 1] Checking ADB device connection...
+[18:30:16] INFO: === ADB devices: 0 ===
+[18:30:16] INFO: No ADB device detected. Attempting to fix...
+[18:30:16] INFO: [STEP 2] Sending AT command to set USB mode...
+[18:30:16] INFO: [~] 䤣i^ AT PORTC
+[18:30:16] INFO: AT command sent successfully. Waiting 90 seconds for reboot...
+[18:30:21] INFO: 執行自動修復...
+[18:30:21] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\BAT_FILES/auto_fix_adb_ENG.bat"
+[18:30:21] INFO: [STEP 1] Checking ADB device connection...
+[18:30:22] INFO: === ADB devices: 0 ===
+[18:30:22] INFO: No ADB device detected. Attempting to fix...
+[18:30:22] INFO: [STEP 2] Sending AT command to set USB mode...
+[18:30:22] INFO: [~] 䤣i^ AT PORTC
+[18:30:22] INFO: AT command sent successfully. Waiting 90 seconds for reboot...

@@ -1,0 +1,73 @@
+[18:33:39] INFO: 檢查 ADB 環境...
+[18:33:39] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES/ADB Environment Check.bat"
+[18:33:39] INFO: === Step 0: Check ADB Environment ===
+[18:33:40] INFO: Current adb path:
+[18:33:40] INFO: C:\platform-tools\adb.exe
+[18:33:40] INFO: 
+[18:33:40] INFO: Android Debug Bridge version 1.0.41
+[18:33:40] INFO: Version 35.0.0-11411520
+[18:33:40] INFO: Installed as C:\platform-tools\adb.exe
+[18:33:40] INFO: Running on Windows 10.0.26100
+[18:33:42] INFO: 
+[18:33:42] INFO: List of devices attached
+[18:33:42] INFO: 
+[18:33:42] INFO: 
+[18:33:42] INFO: === ADB devices: 0 ===
+[18:33:42] INFO: 
+[18:33:42] INFO: [EXIT] code=0
+[18:33:42] INFO: === Summary ===
+[18:33:42] INFO: ADB Path: C:\platform-tools\adb.exe
+[18:33:42] INFO: Device Count: 0
+[18:33:42] INFO: ================
+[18:33:42] ERROR: * daemon not running; starting now at tcp:5037
+[18:33:42] ERROR: * daemon started successfully
+[18:33:44] INFO: 執行自動修復...
+[18:33:44] INFO: [RUN] cmd /c chcp 65001 > nul & call "D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES/auto_fix_adb_ENG.bat"
+[18:33:44] INFO: 
+[18:33:44] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>﻿@echo off
+[18:33:44] INFO: 
+[18:33:44] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>chcp 65001  1>nul
+[18:33:44] INFO: 
+[18:33:44] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>setlocal enabledelayedexpansion
+[18:33:44] INFO: 
+[18:33:44] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>echo [STEP 1] Checking ADB device connection...
+[18:33:44] INFO: [STEP 1] Checking ADB device connection...
+[18:33:44] INFO: 
+[18:33:44] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>adb devices  1>adb_check.txt
+[18:33:44] INFO: 
+[18:33:44] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>for /F %C in ('findstr /R /C:"device$" adb_check.txt | find /v /c ""') do set COUNT=%C
+[18:33:44] INFO: 
+[18:33:44] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>set COUNT=0
+[18:33:44] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>echo === ADB devices: 0 ===
+[18:33:45] INFO: [EXIT] code=2
+[18:33:45] INFO: === ADB devices: 0 ===
+[18:33:45] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>for /F "tokens=1" %S in ('findstr /R /C:"device$" adb_check.txt') do echo - %S
+[18:33:45] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>findstr /R /C:"device$" adb_check.txt  1>nul
+[18:33:45] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>if 1 == 0 (
+[18:33:45] INFO: echo ADB is connected, no fix needed.
+[18:33:45] INFO:  del adb_check.txt
+[18:33:45] INFO:  if not defined NO_PAUSE pause
+[18:33:45] INFO:  exit /b
+[18:33:45] INFO: )
+[18:33:45] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>echo No ADB device detected. Attempting to fix...
+[18:33:45] INFO: No ADB device detected. Attempting to fix...
+[18:33:45] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>echo [STEP 2] Sending AT command to set USB mode...
+[18:33:45] INFO: [STEP 2] Sending AT command to set USB mode...
+[18:33:45] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>python "D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES\..\fix_usbcfg.py"
+[18:33:45] INFO: 
+[18:33:45] INFO: D:\MU310_FW\GUI_ADB_tools\release\BAT_FILES>if 2 NEQ 0 (
+[18:33:45] INFO: echo Failed to send AT command. Cannot proceed with fix.
+[18:33:45] INFO:  if not defined NO_PAUSE pause
+[18:33:45] INFO:  exit /b
+[18:33:45] INFO: )
+[18:33:45] INFO: Failed to send AT command. Cannot proceed with fix.
+[18:33:45] INFO: Press any key to continue . . .
+[18:33:46] ERROR: '﻿@echo' OΥ~ROBi檺{Χ妸ɡC
+[18:33:46] ERROR: python: can't open file 'D:\\MU310_FW\\GUI_ADB_tools\\release\\fix_usbcfg.py': [Errno 2] No such file or directory

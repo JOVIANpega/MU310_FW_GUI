@@ -15,6 +15,7 @@
     ol{margin:8px 0 16px 20px}
     .tag{display:inline-block; background:#e6f2ff; border:1px solid #cfe8ff; border-radius:4px; padding:2px 6px; margin-right:6px}
     .box{background:#fffbe6; border:1px solid #ffe58f; border-radius:6px; padding:10px;}
+    .highlight{background:#e6f2ff; border-left:4px solid #2b579a; padding:8px 12px; margin:12px 0}
   </style>
 </head>
 <body>
@@ -70,6 +71,20 @@
   </ul>
 
   <h3>韌體升級 <span class="en">Firmware Upgrade</span></h3>
+  <div class="highlight">
+    <strong>韌體檔案選擇靈活性 / Firmware File Selection Flexibility</strong>
+    <ul>
+      <li><strong>支援任何檔名</strong>：<code>MU310-Q611GT_*.bin</code>、<code>MU310-Q612EB_*.bin</code>、<code>custom_*.bin</code></li>
+      <li><strong>支援任何版本</strong>：<code>V1.1.0.0</code>、<code>V2.0.0.0</code>、<code>V3.1.2.3</code></li>
+      <li><strong>支援任何位置</strong>：完整路徑或 <code>FW_IMAGE\</code> 目錄</li>
+    </ul>
+    <ul class="en">
+      <li><strong>Supports any filename</strong>: <code>MU310-Q611GT_*.bin</code>, <code>MU310-Q612EB_*.bin</code>, <code>custom_*.bin</code></li>
+      <li><strong>Supports any version</strong>: <code>V1.1.0.0</code>, <code>V2.0.0.0</code>, <code>V3.1.2.3</code></li>
+      <li><strong>Supports any location</strong>: Full path or <code>FW_IMAGE\</code> directory</li>
+    </ul>
+  </div>
+  
   <ol>
     <li>按「瀏覽」選擇 <code>.bin</code> 檔（建議放在 <code>FW_IMAGE\</code>；路徑過長會以中間省略顯示）。</li>
     <li>按「執行韌體升級」；日誌會連續顯示 push/sync/停服務/觸發更新等進度。</li>
@@ -81,6 +96,24 @@
     <li>Click "Execute Firmware Upgrade"; logs will continuously show push/sync/stop service/trigger update progress.</li>
     <li>Can also run batch file directly:<br/>
       <code>"Burn_in _611GT.bat" &lt;firmware.bin or full path&gt;</code></li>
+  </ol>
+
+  <h4>韌體選擇方式 <span class="en">Firmware Selection Methods</span></h4>
+  <ol>
+    <li><strong>完整路徑</strong>（最高優先）：<br/>
+      <code>"Burn_in _611GT.bat" "D:\firmware\MU310-Q611GT_V1.2.0.0_1_modem.bin"</code></li>
+    <li><strong>FW_IMAGE 目錄 + 檔名</strong>：<br/>
+      <code>"Burn_in _611GT.bat" "MU310-Q612EB_V2.0.0_1_modem.bin"</code></li>
+    <li><strong>互動式選擇</strong>（無參數時）：<br/>
+      <code>"Burn_in _611GT.bat"</code> 自動掃描並列出所有選項</li>
+  </ol>
+  <ol class="en">
+    <li><strong>Full path</strong> (highest priority):<br/>
+      <code>"Burn_in _611GT.bat" "D:\firmware\MU310-Q611GT_V1.2.0.0_1_modem.bin"</code></li>
+    <li><strong>FW_IMAGE directory + filename</strong>:<br/>
+      <code>"Burn_in _611GT.bat" "MU310-Q612EB_V2.0.0_1_modem.bin"</code></li>
+    <li><strong>Interactive selection</strong> (no parameters):<br/>
+      <code>"Burn_in _611GT.bat"</code> automatically scans and lists all options</li>
   </ol>
 
   <h3>設定 <span class="en">Settings</span></h3>
@@ -102,18 +135,20 @@
     <ul>
       <li>升級期間請勿斷線；裝置可能自動重啟，需數分鐘。</li>
       <li>若批次檔顯示找不到檔案，確認檔名與 <code>FW_IMAGE\</code> 位置或使用完整路徑。</li>
+      <li>韌體檔案支援任何檔名與版本，只要副檔名為 <code>.bin</code> 即可。</li>
     </ul>
     <ul class="en">
       <li>Do not disconnect during upgrade; device may restart automatically, taking several minutes.</li>
       <li>If batch file shows "file not found", verify filename and <code>FW_IMAGE\</code> location or use full path.</li>
+      <li>Firmware files support any filename and version, as long as the extension is <code>.bin</code>.</li>
     </ul>
   </div>
 
   <h2>常見問題 <span class="en">FAQ</span></h2>
   <h3>Q1: 看到 "Firmware file not found"？</h3>
-  <p>請確認檔案在 <code>FW_IMAGE\</code> 且檔名正確，或於 GUI 重新選擇。</p>
+  <p>請確認檔案在 <code>FW_IMAGE\</code> 且檔名正確，或於 GUI 重新選擇。支援任何檔名的 <code>.bin</code> 檔案。</p>
   <h3 class="en">Q1: Seeing "Firmware file not found"?</h3>
-  <p class="en">Please confirm the file is in <code>FW_IMAGE\</code> with correct filename, or reselect in GUI.</p>
+  <p class="en">Please confirm the file is in <code>FW_IMAGE\</code> with correct filename, or reselect in GUI. Supports any filename with <code>.bin</code> extension.</p>
   
   <h3>Q2: ADB 無法偵測到裝置？</h3>
   <p>檢查 USB 線與驅動、裝置的 USB 偵錯模式；於「ADB 工具」分頁按「檢查 ADB 環境」。</p>

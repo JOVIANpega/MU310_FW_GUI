@@ -1,0 +1,70 @@
+[14:10:50] INFO: 檢查 ADB 環境...
+[14:10:50] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES/ADB Environment Check.bat"
+[14:10:50] INFO: 
+[14:10:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>echo === Step 0: Check ADB Environment ===
+[14:10:50] INFO: === Step 0: Check ADB Environment ===
+[14:10:50] INFO: 
+[14:10:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>where adb  1>nul 2>nul
+[14:10:50] INFO: 
+[14:10:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>if 0 NEQ 0 (
+[14:10:50] INFO: echo [ERROR] ADB not found! Please install Android SDK Platform-tools and add to PATH.
+[14:10:50] INFO:  pause
+[14:10:50] INFO:  exit /b 1
+[14:10:50] INFO: )
+[14:10:50] INFO: 
+[14:10:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>where adb   | findstr /i "System32"  1>nul
+[14:10:50] INFO: 
+[14:10:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>if 1 == 0 (
+[14:10:50] INFO: echo [ERROR] Detected ADB in System32 folder!
+[14:10:50] INFO:  echo Please remove/rename it and use C:\platform-tools\adb.exe instead.
+[14:10:50] INFO:  pause
+[14:10:50] INFO:  exit /b 1
+[14:10:50] INFO: )
+[14:10:50] INFO: 
+[14:10:50] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>echo Current adb path:
+[14:10:51] INFO: Current adb path:
+[14:10:51] INFO: 
+[14:10:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>where adb
+[14:10:51] INFO: C:\platform-tools\adb.exe
+[14:10:51] INFO: 
+[14:10:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>echo.
+[14:10:51] INFO: 
+[14:10:51] INFO: 
+[14:10:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>adb version
+[14:10:51] INFO: Android Debug Bridge version 1.0.41
+[14:10:51] INFO: Version 35.0.0-11411520
+[14:10:51] INFO: Installed as C:\platform-tools\adb.exe
+[14:10:51] INFO: Running on Windows 10.0.26100
+[14:10:51] INFO: 
+[14:10:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>if 0 NEQ 0 (
+[14:10:51] INFO: echo [ERROR] Failed to run adb. Please check if Platform-tools is correctly installed.
+[14:10:51] INFO:  pause
+[14:10:51] INFO:  exit /b 1
+[14:10:51] INFO: )
+[14:10:51] INFO: 
+[14:10:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>adb kill-server
+[14:10:51] INFO: 
+[14:10:51] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>adb start-server
+[14:10:53] INFO: Scan COM ports...
+[14:10:53] INFO: Found 4 COM ports:
+[14:10:53] INFO:   COM9- Quectel USB AT Port (COM9  [VID:PID 2C7C:0801]
+[14:10:53] INFO:   COM8- Quectel USB NMEA Port (COM8  [VID:PID 2C7C:0801]
+[14:10:53] INFO:   COM7- Quectel USB DM Port (COM7  [VID:PID 2C7C:0801]
+[14:10:53] INFO:   COM3- Prolific PL2303GC USB Serial COM Port (COM3  [VID:PID 067B:23A3]
+[14:10:56] INFO: 
+[14:10:56] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>if 0 NEQ 0 (
+[14:10:56] INFO: echo [ERROR] Failed to start ADB server. Please check USB drivers.
+[14:10:56] INFO: [EXIT] code=0
+[14:10:56] INFO:  pause
+[14:10:56] INFO:  exit /b 1
+[14:10:56] INFO: )
+[14:10:56] INFO: 
+[14:10:56] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>adb devices
+[14:10:56] INFO: List of devices attached
+[14:10:56] INFO: 109c377c	device
+[14:10:56] INFO: 
+[14:10:56] INFO: 
+[14:10:56] INFO: C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI355602\BAT_FILES>echo.
+[14:10:56] INFO: 
+[14:10:56] ERROR: * daemon not running; starting now at tcp:5037
+[14:10:56] ERROR: * daemon started successfully

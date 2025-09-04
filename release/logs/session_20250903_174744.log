@@ -1,0 +1,25 @@
+[17:47:45] INFO: 檢查 ADB 環境...
+[17:47:45] INFO: [RUN] cmd /c chcp 65001 > nul & call "C:\Users\PEGA_U~1\AppData\Local\Temp\_MEI225682\BAT_FILES/ADB Environment Check.bat"
+[17:47:45] INFO: === Step 0: Check ADB Environment ===
+[17:47:45] INFO: Current adb path:
+[17:47:46] INFO: C:\platform-tools\adb.exe
+[17:47:46] INFO: 
+[17:47:46] INFO: Android Debug Bridge version 1.0.41
+[17:47:46] INFO: Version 35.0.0-11411520
+[17:47:46] INFO: Installed as C:\platform-tools\adb.exe
+[17:47:46] INFO: Running on Windows 10.0.26100
+[17:47:51] INFO: 
+[17:47:51] INFO: List of devices attached
+[17:47:51] INFO: 109c377c	device
+[17:47:51] INFO: 
+[17:47:51] INFO: 
+[17:47:51] INFO: === ADB devices: 1 ===
+[17:47:51] INFO: - 109c377c
+[17:47:51] INFO: [EXIT] code=0
+[17:47:51] INFO: 
+[17:47:51] INFO: === Summary ===
+[17:47:51] INFO: ADB Path: C:\platform-tools\adb.exe
+[17:47:51] INFO: Device Count: 1
+[17:47:51] INFO: ================
+[17:47:51] ERROR: * daemon not running; starting now at tcp:5037
+[17:47:51] ERROR: * daemon started successfully

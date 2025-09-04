@@ -79,7 +79,7 @@ EN: Dict[str, str] = {
     "help.text": (
         "1) ADB Tools: Check environment, restart server, list devices, check interface.\n"
         "2) Connection Fix: Scan/select AT Port, run Auto Fix to set usbcfg and reboot, then recheck ADB.\n"
-        "3) Firmware Upgrade: Pick firmware, pre-checks (ADB, DM PORT, write access), then Start Upgrade to push/sync/stop services/trigger FOTA.\n"
+        "3) Firmware Upgrade: Select firmware (supports any filename, version, location), pre-checks (ADB, DM PORT, write access), then Start Upgrade to push/sync/stop services/trigger FOTA.\n"
         "Notes: Enable Debug Mode for detailed logs. Logs auto-save in logs/ folder."
     ),
 
@@ -176,7 +176,7 @@ ZH: Dict[str, str] = {
     "help.text": (
         "1) ADB 工具: 檢查環境、重啟服務、列出裝置、檢查介面。\n"
         "2) 連線修復: 掃描/選擇 AT 埠，執行 Auto Fix 設定 usbcfg 並重啟，之後檢查 ADB。\n"
-        "3) 韌體升級: 選擇韌體，執行前置檢查(ADB、DM 埠、寫入權限)，按開始升級依序 push/sync/停服務/FOTA。\n"
+        "3) 韌體升級: 選擇韌體（支援任何檔名、版本、位置），執行前置檢查(ADB、DM 埠、寫入權限)，按開始升級依序 push/sync/停服務/FOTA。\n"
         "備註: 勾選除錯模式可顯示詳細日誌。日誌會自動存到 logs/ 資料夾。"
     ),
 

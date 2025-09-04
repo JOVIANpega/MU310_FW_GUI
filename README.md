@@ -15,6 +15,8 @@
   - 可調重啟等待秒數（預設 90 秒）
 - Firmware Upgrade（韌體升級）
   - 韌體檔選擇/瀏覽、基本校驗（存在/大小）
+  - **新增：靈活韌體選擇** - 支援任何檔名、任何版本、任何位置的 .bin 檔案
+  - **新增：多種選擇方式** - 完整路徑、FW_IMAGE 目錄、互動式選擇
   - 前置檢查：檢查 ADB、檢查 DM PORT、測試目標路徑寫入權限
   - 選項：停止服務、同步兩次、push 失敗重試、ADB 重試
   - 一鍵升級：push → sync → stop services → 透過 `/dev/smd7` 發送 `AT+QFOTADL="/usrdata/cache/ufs/update.zip"`
